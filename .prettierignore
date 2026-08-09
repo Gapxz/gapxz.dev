@@ -1,0 +1,4 @@
+# Files managed by other tools
+package-lock.json
+AGENTS.md
+CLAUDE.md
