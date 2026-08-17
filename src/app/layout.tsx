@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
+import { Sora } from "next/font/google";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
+
+const sora = Sora({
+  subsets: ["latin"],
+  variable: "--font-sora",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -10,7 +16,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="pt-BR">
-      <body className="min-h-screen bg-background text-foreground antialiased">
+      <body
+        className={`${sora.variable} min-h-screen bg-background font-sans font-normal text-foreground antialiased`}
+      >
         <SiteHeader />
         {children}
       </body>
