@@ -6,6 +6,10 @@
   --color-foreground: #f2f4f3;
 }
 
+@theme inline {
+  --font-sans: var(--font-sora);
+}
+
 :root {
   color-scheme: dark;
 }
