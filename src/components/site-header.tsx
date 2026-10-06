@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { Icon } from "./icon";
+import Link from "next/link";
 import { ThemeToggle } from "./theme-toggle";
 const items = [
   ["Projetos", "projetos"],
@@ -65,7 +66,7 @@ export function SiteHeader() {
       data-open={open}
     >
       <div className="site-container nav-entrance flex h-[72px] items-center justify-between gap-5">
-        <a
+        <Link
           href="/#inicio"
           aria-label="Gap, início"
           onClick={() => setOpen(false)}
@@ -75,31 +76,31 @@ export function SiteHeader() {
           <span className="hidden border-l border-line pl-3 text-xs font-medium tracking-normal text-muted xl:inline">
             Portfólio
           </span>
-        </a>
+        </Link>
         <nav
           aria-label="Navegação principal"
           className="hidden items-center gap-1 md:flex"
         >
           {items.map(([label, id]) => (
-            <a
+            <Link
               key={id}
               href={`/#${id}`}
               aria-current={active === id ? "location" : undefined}
               className={`nav-link ${active === id ? "is-active" : ""}`}
             >
               {label}
-            </a>
+            </Link>
           ))}
         </nav>
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          <a
+          <Link
             href="/#contato"
             onClick={() => setOpen(false)}
             className="soft-press hidden min-h-11 items-center gap-2 rounded-full border border-line bg-foreground text-background px-4 text-[13px] font-semibold sm:inline-flex"
           >
             Vamos conversar <Icon name="arrow" width="13" height="13" />
-          </a>
+          </Link>
           <button
             ref={toggle}
             type="button"
@@ -120,7 +121,7 @@ export function SiteHeader() {
         className="mobile-menu site-container pb-5 md:hidden"
       >
         {items.map(([label, id]) => (
-          <a
+          <Link
             key={id}
             href={`/#${id}`}
             onClick={() => setOpen(false)}
@@ -133,7 +134,7 @@ export function SiteHeader() {
               height="17"
               className="text-muted"
             />
-          </a>
+          </Link>
         ))}
       </nav>
     </header>
