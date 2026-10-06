@@ -1,9 +1,10 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { Icon } from "./icon";
+import { ThemeToggle } from "./theme-toggle";
 const items = [
-  ["Sobre", "sobre"],
   ["Projetos", "projetos"],
+  ["Sobre", "sobre"],
   ["Jornada", "jornada"],
   ["Setup", "setup"],
   ["Contato", "contato"],
@@ -65,12 +66,15 @@ export function SiteHeader() {
     >
       <div className="site-container nav-entrance flex h-[72px] items-center justify-between gap-5">
         <a
-          href="#inicio"
+          href="/#inicio"
           aria-label="Gap, início"
           onClick={() => setOpen(false)}
-          className="flex min-h-11 items-center text-[25px] font-semibold tracking-[-.065em]"
+          className="flex min-h-11 items-center gap-3 text-[25px] font-semibold tracking-[-.065em]"
         >
-          gap<span className="text-rose">.</span>
+          <span>gap.</span>
+          <span className="hidden border-l border-line pl-3 text-xs font-medium tracking-normal text-muted xl:inline">
+            Portfólio
+          </span>
         </a>
         <nav
           aria-label="Navegação principal"
@@ -79,7 +83,7 @@ export function SiteHeader() {
           {items.map(([label, id]) => (
             <a
               key={id}
-              href={`#${id}`}
+              href={`/#${id}`}
               aria-current={active === id ? "location" : undefined}
               className={`nav-link ${active === id ? "is-active" : ""}`}
             >
@@ -88,10 +92,11 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="flex items-center gap-3">
+          <ThemeToggle />
           <a
-            href="#contato"
+            href="/#contato"
             onClick={() => setOpen(false)}
-            className="soft-press hidden min-h-11 items-center gap-2 rounded-full border border-white/10 bg-white/[.06] px-4 text-[13px] font-semibold sm:inline-flex"
+            className="soft-press hidden min-h-11 items-center gap-2 rounded-full border border-line bg-foreground text-background px-4 text-[13px] font-semibold sm:inline-flex"
           >
             Vamos conversar <Icon name="arrow" width="13" height="13" />
           </a>
@@ -117,7 +122,7 @@ export function SiteHeader() {
         {items.map(([label, id]) => (
           <a
             key={id}
-            href={`#${id}`}
+            href={`/#${id}`}
             onClick={() => setOpen(false)}
             className="flex min-h-14 items-center justify-between border-t border-line px-1 text-lg font-medium"
           >
