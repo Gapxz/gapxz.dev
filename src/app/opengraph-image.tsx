@@ -15,8 +15,8 @@ export default function OpenGraphImage() {
         flexDirection: "column",
         justifyContent: "space-between",
         padding: "70px 80px",
-        background: "#0a0908",
-        color: "#f2f4f3",
+        background: "#09080b",
+        color: "#f5f5f7",
       }}
     >
       <div
@@ -24,10 +24,10 @@ export default function OpenGraphImage() {
           display: "flex",
           justifyContent: "space-between",
           fontSize: 24,
-          color: "#d397a4",
+          color: "#e5a6b4",
         }}
       >
-        <span>gap. / dev</span>
+        <span>gap.</span>
         <span>Gustavo Souza Schroder</span>
       </div>
       <div
@@ -48,7 +48,7 @@ export default function OpenGraphImage() {
         >
           <span>Ideias em código.</span>
           <span>Curiosidade em</span>
-          <span style={{ color: "#d397a4" }}>movimento.</span>
+          <span style={{ color: "#e5a6b4" }}>movimento.</span>
         </div>
         <div
           style={{
@@ -56,12 +56,12 @@ export default function OpenGraphImage() {
             width: 245,
             height: 245,
             background: "#49111c",
-            borderRadius: 64,
+            borderRadius: 140,
             alignItems: "center",
             justifyContent: "center",
             fontSize: 180,
             letterSpacing: -15,
-            transform: "rotate(-10deg)",
+            border: "1px solid #e5a6b440",
           }}
         >
           g.
@@ -74,7 +74,7 @@ export default function OpenGraphImage() {
           borderTop: "1px solid #39282c",
           paddingTop: 25,
           fontSize: 20,
-          color: "#a8a2a1",
+          color: "#a5a3ad",
         }}
       >
         <span>Python · Desenvolvimento web · ADS</span>

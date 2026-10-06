@@ -9,11 +9,11 @@
   --color-surface: #151418;
   --color-line: #ffffff14;
   --font-sans:
-    -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI",
-    "Helvetica Neue", Arial, sans-serif;
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI Variable Text",
+    "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --font-display:
-    -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
-    "Helvetica Neue", Arial, sans-serif;
+    -apple-system, BlinkMacSystemFont, "SF Pro Display",
+    "Segoe UI Variable Display", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 :root {
   color-scheme: dark;
@@ -109,7 +109,7 @@ summary:focus-visible {
     box-shadow: 0 0 12px #e5a6b445;
   }
   .project-art {
-    @apply relative flex h-[300px] items-center justify-center overflow-hidden;
+    @apply relative flex h-[340px] items-center justify-center overflow-hidden;
   }
   .art-caption {
     @apply absolute bottom-5 text-[11px] text-muted;
@@ -152,7 +152,7 @@ summary:focus-visible {
   font-size: clamp(2.7rem, 5.35vw, 4.75rem);
   line-height: 1.025;
   letter-spacing: -0.052em;
-  font-weight: 650;
+  font-weight: 600;
 }
 .hero-title span {
   display: block;
@@ -299,6 +299,11 @@ summary:focus-visible {
 [data-motion="off"] .continuous,
 [data-motion="off"] .continuous::before,
 [data-motion="off"] .continuous::after {
+  animation-play-state: paused !important;
+}
+.hero-scene[data-visible="false"] .continuous,
+.hero-scene[data-visible="false"] .continuous::before,
+.hero-scene[data-visible="false"] .continuous::after {
   animation-play-state: paused !important;
 }
 .scene-particles {

@@ -43,10 +43,10 @@ export function ProjectArt({ id }: { id: string }) {
           <i className="size-1.5 rounded-full bg-white/10" />
           <span className="ml-auto text-[9px] text-muted">gapxz.dev</span>
         </div>
-        <div className="flex items-center justify-between gap-3 px-6 py-8">
+        <div className="flex items-center justify-between gap-3 px-4 py-8 sm:px-6">
           <div>
             <p className="mb-3 text-[9px] text-muted">Gustavo Souza Schroder</p>
-            <p className="text-[22px] leading-[1.12] font-semibold tracking-[-.04em]">
+            <p className="text-[17px] sm:text-xl leading-[1.12] font-semibold tracking-[-.04em]">
               Ideias em código.
               <br />
               Curiosidade em
@@ -55,8 +55,8 @@ export function ProjectArt({ id }: { id: string }) {
             </p>
             <div className="mt-4 h-4 w-20 rounded-full bg-rose/70" />
           </div>
-          <div className="relative grid size-24 shrink-0 place-items-center rounded-full border border-rose/15">
-            <div className="grid size-16 place-items-center rounded-full border border-rose/20 bg-accent/60 text-4xl font-semibold tracking-[-.08em] text-[#f1dce3]">
+          <div className="relative grid size-16 shrink-0 sm:size-20 place-items-center rounded-full border border-rose/15">
+            <div className="grid size-12 place-items-center sm:size-14 rounded-full border border-rose/20 bg-accent/60 text-3xl font-semibold tracking-[-.08em] text-[#f1dce3]">
               g.
             </div>
           </div>
