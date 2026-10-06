@@ -16,8 +16,8 @@ export function SetupArt() {
           y2="250"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#170e11" />
-          <stop offset="1" stopColor="#49111c" />
+          <stop stopColor="#1c1c1e" />
+          <stop offset="1" stopColor="#3a3a3c" />
         </linearGradient>
         <linearGradient
           id="glass"
@@ -28,11 +28,11 @@ export function SetupArt() {
           gradientUnits="userSpaceOnUse"
         >
           <stop stopColor="#e1d8d3" stopOpacity=".15" />
-          <stop offset="1" stopColor="#49111c" stopOpacity=".3" />
+          <stop offset="1" stopColor="#3a3a3c" stopOpacity=".3" />
         </linearGradient>
         <radialGradient id="deskglow">
-          <stop stopColor="#7f293d" stopOpacity=".35" />
-          <stop offset="1" stopColor="#49111c" stopOpacity="0" />
+          <stop stopColor="#8e8e93" stopOpacity=".35" />
+          <stop offset="1" stopColor="#3a3a3c" stopOpacity="0" />
         </radialGradient>
       </defs>
       <ellipse cx="400" cy="250" rx="340" ry="170" fill="url(#deskglow)" />
@@ -59,11 +59,11 @@ export function SetupArt() {
       <path d="m287 116 239 7v130l-239 2V116Z" fill="url(#screen)" />
       <path
         d="M288 223c62-50 96 30 158-3 36-20 57-13 80-3v36l-239 2Z"
-        fill="#692133"
+        fill="#48484a"
       />
       <path
         d="M288 242c60-28 100 20 158-3 34-16 57-8 80-3v17l-239 2Z"
-        fill="#943a50"
+        fill="#636366"
       />
       <text
         x="387"
@@ -93,7 +93,7 @@ export function SetupArt() {
         cy="193"
         rx="22"
         ry="25"
-        stroke="#c48a97"
+        stroke="#d1d1d6"
         strokeWidth="4"
       />
       <ellipse
@@ -101,7 +101,7 @@ export function SetupArt() {
         cy="253"
         rx="22"
         ry="25"
-        stroke="#c48a97"
+        stroke="#d1d1d6"
         strokeWidth="4"
       />
       <ellipse
@@ -109,16 +109,16 @@ export function SetupArt() {
         cy="193"
         rx="10"
         ry="12"
-        fill="#49111c"
-        stroke="#9e6672"
+        fill="#3a3a3c"
+        stroke="#8e8e93"
       />
       <ellipse
         cx="658"
         cy="253"
         rx="10"
         ry="12"
-        fill="#49111c"
-        stroke="#9e6672"
+        fill="#3a3a3c"
+        stroke="#8e8e93"
       />
       <path
         d="m274 322 146-7 38 21-149 10-35-24Z"
@@ -154,7 +154,7 @@ export function SetupArt() {
       <path d="m95 333 1 56m606-23v33" stroke="#504447" strokeWidth="6" />
       <path
         d="M117 104h50m-25-25v50M685 87h24m-12-12v24"
-        stroke="#9a5665"
+        stroke="#8e8e93"
         strokeOpacity=".5"
       />
     </svg>
