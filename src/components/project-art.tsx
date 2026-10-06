@@ -2,56 +2,67 @@ export function ProjectArt({ id }: { id: string }) {
   if (id === "campo-minado")
     return (
       <div className="project-art mine-art" aria-hidden="true">
-        <div className="grid -rotate-6 grid-cols-9 gap-1">
-          {Array.from({ length: 81 }, (_, i) => (
-            <span
-              key={i}
-              className={`grid size-5 place-items-center rounded-sm border text-[10px] font-mono ${[8, 9, 15, 16, 17, 22, 23, 24].includes(i) ? "border-transparent bg-white/[.02] text-rose" : "border-white/10 bg-white/5 text-muted"}`}
-            >
-              {
-                (
-                  {
-                    8: "1",
-                    9: "1",
-                    15: "1",
-                    16: "",
-                    17: "2",
-                    22: "1",
-                    23: "2",
-                    24: "⚑",
-                  } as Record<number, string>
-                )[i]
-              }
-            </span>
-          ))}
+        <div className="rounded-[22px] border border-white/10 bg-[#211b23]/70 p-4 shadow-2xl">
+          <div className="mb-3 flex items-center justify-between text-[10px] text-muted">
+            <span>Campo Minado</span>
+            <span className="text-rose">9 × 9</span>
+          </div>
+          <div className="grid grid-cols-9 gap-1">
+            {Array.from({ length: 81 }, (_, i) => (
+              <span
+                key={i}
+                className={`grid size-[17px] place-items-center rounded-[4px] text-[9px] font-medium ${[10, 11, 12, 19, 20, 21, 28, 29, 30, 37, 38, 39].includes(i) ? "bg-white/[.025] text-rose" : "bg-white/[.09] text-muted"}`}
+              >
+                {
+                  (
+                    {
+                      10: "1",
+                      11: "1",
+                      12: "2",
+                      19: "1",
+                      21: "2",
+                      28: "1",
+                      29: "2",
+                      30: "⚑",
+                    } as Record<number, string>
+                  )[i]
+                }
+              </span>
+            ))}
+          </div>
         </div>
-        <span className="art-caption">9 × 9 / PYTHON NO TERMINAL</span>
+        <span className="art-caption">Lógica em cada movimento.</span>
       </div>
     );
   return (
     <div className="project-art portfolio-art" aria-hidden="true">
-      <div className="w-[75%] -rotate-3 rounded-md border border-white/10 bg-background p-5 shadow-2xl">
-        <div className="flex justify-between border-b border-line pb-3 text-[10px]">
-          <strong>
-            gap<span className="text-rose">.</span>
-          </strong>
-          <span className="text-muted">
-            sobre &nbsp; projetos &nbsp; contato
-          </span>
+      <div className="w-[82%] max-w-[390px] overflow-hidden rounded-[16px] border border-white/10 bg-[#0e0b10] shadow-2xl">
+        <div className="flex items-center gap-1.5 border-b border-line px-4 py-3">
+          <i className="size-1.5 rounded-full bg-white/20" />
+          <i className="size-1.5 rounded-full bg-white/15" />
+          <i className="size-1.5 rounded-full bg-white/10" />
+          <span className="ml-auto text-[9px] text-muted">gapxz.dev</span>
         </div>
-        <div className="flex items-center justify-between py-6">
-          <p className="text-xl font-medium leading-tight tracking-[-.06em] sm:text-2xl">
-            Ideias em código.
-            <br />
-            <em className="font-editorial text-rose">movimento.</em>
-          </p>
-          <span className="text-5xl font-bold tracking-[-.1em] text-rose/60">
-            g.
-          </span>
+        <div className="flex items-center justify-between gap-3 px-6 py-8">
+          <div>
+            <p className="mb-3 text-[9px] text-muted">Gustavo Souza Schroder</p>
+            <p className="text-[22px] leading-[1.12] font-semibold tracking-[-.04em]">
+              Ideias em código.
+              <br />
+              Curiosidade em
+              <br />
+              <span className="text-rose">movimento.</span>
+            </p>
+            <div className="mt-4 h-4 w-20 rounded-full bg-rose/70" />
+          </div>
+          <div className="relative grid size-24 shrink-0 place-items-center rounded-full border border-rose/15">
+            <div className="grid size-16 place-items-center rounded-full border border-rose/20 bg-accent/60 text-4xl font-semibold tracking-[-.08em] text-[#f1dce3]">
+              g.
+            </div>
+          </div>
         </div>
-        <div className="h-1 w-12 bg-accent" />
       </div>
-      <span className="art-caption">UM ESPAÇO EM CONSTANTE CONSTRUÇÃO</span>
+      <span className="art-caption">Um espaço para o próximo passo.</span>
     </div>
   );
 }

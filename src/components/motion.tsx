@@ -1,17 +1,49 @@
 "use client";
-import { useEffect } from "react";
-export function Motion() {
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  useSyncExternalStore,
+  type ReactNode,
+} from "react";
+const query = "(prefers-reduced-motion: reduce)";
+function subscribe(callback: () => void) {
+  const media = matchMedia(query);
+  media.addEventListener("change", callback);
+  return () => media.removeEventListener("change", callback);
+}
+function snapshot() {
+  return matchMedia(query).matches;
+}
+const MotionContext = createContext({
+  enabled: true,
+  paused: false,
+  reduced: false,
+  toggle: () => {},
+});
+export function useMotion() {
+  return useContext(MotionContext);
+}
+export function MotionProvider({ children }: { children: ReactNode }) {
+  const reduced = useSyncExternalStore(subscribe, snapshot, () => false);
+  const [paused, setPaused] = useState(false);
+  const enabled = !paused && !reduced;
+  const value = useMemo(
+    () => ({ enabled, paused, reduced, toggle: () => setPaused((p) => !p) }),
+    [enabled, paused, reduced],
+  );
   useEffect(() => {
-    const preference = matchMedia("(prefers-reduced-motion: reduce)");
+    document.documentElement.dataset.motion = enabled ? "on" : "off";
     const art = document.querySelector<HTMLElement>("[data-parallax]");
     let frame = 0;
     const update = () => {
       frame = 0;
-      if (art)
-        art.style.setProperty(
-          "--parallax-y",
-          preference.matches ? "0px" : `${Math.min(scrollY, 800) * 0.07}px`,
-        );
+      art?.style.setProperty(
+        "--parallax-y",
+        enabled ? `${Math.min(scrollY, 900) * 0.045}px` : "0px",
+      );
     };
     const schedule = () => {
       if (!frame) frame = requestAnimationFrame(update);
@@ -20,24 +52,24 @@ export function Motion() {
       (entries) =>
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            if (!preference.matches) entry.target.classList.add("reveal-in");
+            if (enabled) entry.target.classList.add("reveal-in");
             observer.unobserve(entry.target);
           }
         }),
       { threshold: 0.08 },
     );
     document
-      .querySelectorAll("[data-reveal]")
+      .querySelectorAll("[data-reveal]:not(.reveal-in)")
       .forEach((el) => observer.observe(el));
-    window.addEventListener("scroll", schedule, { passive: true });
-    preference.addEventListener("change", schedule);
+    if (enabled) window.addEventListener("scroll", schedule, { passive: true });
     update();
     return () => {
       observer.disconnect();
       window.removeEventListener("scroll", schedule);
-      preference.removeEventListener("change", schedule);
       cancelAnimationFrame(frame);
     };
-  }, []);
-  return null;
+  }, [enabled]);
+  return (
+    <MotionContext.Provider value={value}>{children}</MotionContext.Provider>
+  );
 }

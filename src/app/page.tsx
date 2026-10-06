@@ -1,10 +1,18 @@
 import { Hero } from "@/components/hero";
 import { Icon } from "@/components/icon";
-import { Motion } from "@/components/motion";
 import { Projects } from "@/components/projects";
 import { SetupArt } from "@/components/setup-art";
 import { profile, setup } from "@/lib/portfolio";
 
+const technologies = [
+  "Python",
+  "HTML & CSS",
+  "Tailwind CSS",
+  "TypeScript",
+  "React",
+  "Git & GitHub",
+  "SQLite",
+];
 export default function Home() {
   return (
     <>
@@ -12,70 +20,77 @@ export default function Home() {
         <Hero />
         <section
           id="sobre"
-          className="section-space border-t border-line"
+          className="section-space"
           aria-labelledby="about-title"
         >
-          <div
-            className="site-container grid gap-12 lg:grid-cols-[.9fr_1.1fr]"
-            data-reveal
-          >
-            <div>
-              <p className="eyebrow">01 / Por trás do código</p>
+          <div className="site-container">
+            <div className="mb-10 max-w-2xl" data-reveal>
+              <p className="eyebrow">Um pouco sobre mim</p>
               <h2 id="about-title" className="section-title">
-                Prazer, Gustavo.
-                <br />
-                Na internet,{" "}
-                <span className="font-editorial italic text-rose">Gap.</span>
+                A curiosidade é o ponto de partida.
               </h2>
-              <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-line px-4 py-2.5 font-mono text-[10px] text-muted">
-                <Icon name="code" width="16" height="16" /> ADS · Senac RS · 3º
-                semestre
-              </div>
+              <p className="section-description">
+                Prazer, Gustavo. Na internet, Gap. Gosto de entender como as
+                coisas funcionam — e de descobrir construindo.
+              </p>
             </div>
-            <div>
-              <p className="text-lg leading-8 tracking-[-.025em] text-foreground/90">
-                Gosto de entender como as coisas funcionam.
-                <br className="hidden sm:block" /> E gosto ainda mais de
-                descobrir construindo.
-              </p>
-              <p className="mt-5 text-sm leading-7 text-muted">
-                Estou concluindo o terceiro semestre de Análise e
-                Desenvolvimento de Sistemas no Senac RS. Meu foco está em
-                transformar o que aprendo em projetos práticos, conectando
-                lógica de programação, interfaces e resolução de problemas.
-              </p>
-              <p className="mt-4 text-sm leading-7 text-muted">
-                Hoje, Python e desenvolvimento web têm espaço especial nos meus
-                estudos. Fora do código, jogos, música e meu setup também fazem
-                parte da rotina. Procuro uma oportunidade de estágio para
-                aprender em equipe e contribuir com projetos reais.
-              </p>
-              <div className="mt-8 border-t border-line pt-6">
-                <p className="mb-4 font-mono text-[9px] uppercase tracking-[.16em] text-muted">
-                  Tecnologias que fazem parte da jornada
+            <div className="grid gap-5 lg:grid-cols-[1.25fr_1fr]">
+              <article className="surface p-7 sm:p-10" data-reveal>
+                <span className="mb-7 grid size-12 place-items-center rounded-2xl bg-accent/50 text-rose">
+                  <Icon name="code" width="24" height="24" />
+                </span>
+                <h3 className="font-display text-2xl font-semibold tracking-tight">
+                  Aprendizado que vira prática.
+                </h3>
+                <p className="mt-4 text-base leading-7 text-muted">
+                  Estou concluindo o terceiro semestre de Análise e
+                  Desenvolvimento de Sistemas no Senac RS. Conecto o que aprendo
+                  na faculdade com projetos em Python e desenvolvimento web.
                 </p>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    "Python",
-                    "HTML & CSS",
-                    "Tailwind CSS",
-                    "TypeScript",
-                    "React",
-                    "Git & GitHub",
-                    "SQLite",
-                  ].map((tech) => (
-                    <span key={tech} className="tag">
-                      {tech}
-                    </span>
-                  ))}
+                <p className="mt-4 text-base leading-7 text-muted">
+                  Entre lógica, interfaces e resolução de problemas, busco uma
+                  oportunidade de estágio para aprender em equipe e contribuir
+                  com projetos reais.
+                </p>
+                <div className="mt-7 flex items-center gap-2 border-t border-line pt-6 text-sm text-rose">
+                  <span className="status-dot" />
+                  ADS · Senac RS · 3º semestre
                 </div>
+              </article>
+              <div className="grid gap-5">
+                <article className="surface p-7 sm:p-8" data-reveal>
+                  <p className="mb-5 text-sm font-semibold text-foreground">
+                    Na minha caixa de ferramentas
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {technologies.map((tech) => (
+                      <span key={tech} className="tag !px-4 !py-2.5 !text-sm">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </article>
+                <article className="surface p-7 sm:p-8" data-reveal>
+                  <p className="mb-3 text-sm font-semibold">Além do código</p>
+                  <p className="text-base leading-7 text-muted">
+                    Jogos, música e um setup do meu jeito. Espaço para desligar
+                    um pouco — e encontrar a próxima ideia.
+                  </p>
+                  <a
+                    href="#setup"
+                    className="soft-press mt-4 inline-flex min-h-11 items-center gap-2 rounded-lg text-sm font-medium text-rose"
+                  >
+                    Conheça meu espaço{" "}
+                    <Icon name="arrow" width="15" height="15" />
+                  </a>
+                </article>
               </div>
             </div>
           </div>
         </section>
         <section
           id="projetos"
-          className="section-space border-t border-line bg-surface/30"
+          className="section-space"
           aria-label="Projetos selecionados"
         >
           <div className="site-container" data-reveal>
@@ -84,72 +99,72 @@ export default function Home() {
         </section>
         <section
           id="jornada"
-          className="section-space border-t border-line"
+          className="section-space"
           aria-labelledby="journey-title"
         >
-          <div
-            className="site-container grid gap-12 lg:grid-cols-[.8fr_1.2fr]"
-            data-reveal
-          >
-            <div>
-              <p className="eyebrow">03 / Um passo de cada vez</p>
+          <div className="site-container">
+            <div className="mb-10 max-w-2xl" data-reveal>
+              <p className="eyebrow">Minha jornada</p>
               <h2 id="journey-title" className="section-title">
-                Uma jornada
-                <br />
-                em{" "}
-                <span className="font-editorial italic text-rose">
-                  construção.
-                </span>
+                Cada passo conta.
               </h2>
-              <p className="mt-5 max-w-xs text-sm leading-7 text-muted">
-                A faculdade traz a base. A prática abre novas perguntas. Cada
-                experiência entra no próximo projeto.
+              <p className="section-description">
+                A base vem dos estudos. A experiência, de colocar as ideias em
+                movimento.
               </p>
             </div>
-            <div className="relative space-y-9 border-l border-line pl-8 sm:pl-10">
-              <article className="timeline-item">
-                <p className="eyebrow !mb-3">Agora / Formação</p>
-                <h3 className="text-lg tracking-[-.035em]">
+            <div className="grid gap-5 md:grid-cols-3">
+              <article className="surface p-7 sm:p-8" data-reveal>
+                <span className="mb-7 grid size-12 place-items-center rounded-2xl bg-white/5 text-muted">
+                  <Icon name="code" width="24" height="24" />
+                </span>
+                <p className="mb-3 text-xs font-medium text-muted">
+                  Agora · Formação
+                </p>
+                <h3 className="font-display text-2xl font-semibold leading-tight tracking-tight">
                   Análise e Desenvolvimento de Sistemas
                 </h3>
-                <p className="mt-1 text-xs text-rose">
-                  Senac RS · 3º semestre em conclusão
-                </p>
-                <p className="mt-3 text-sm leading-7 text-muted">
-                  Lógica, estruturas de dados, redes e desenvolvimento de
-                  software. Aprendizados que levo do estudo para os meus
-                  projetos.
+                <p className="mt-4 text-[15px] leading-6 text-muted">
+                  Senac RS, terceiro semestre em conclusão. Lógica, estruturas
+                  de dados, redes e desenvolvimento de software.
                 </p>
               </article>
-              <article className="timeline-item rounded-xl border border-rose/20 bg-accent/15 p-6">
-                <div className="mb-4 flex items-center justify-between">
-                  <p className="font-mono text-[10px] uppercase tracking-[.15em] text-rose">
-                    20 jun. 2026 / Reconhecimento
-                  </p>
-                  <Icon name="trophy" className="text-rose" />
-                </div>
-                <h3 className="text-xl tracking-[-.04em]">
-                  Code League <span className="text-rose">2026</span>
+              <article
+                className="surface bg-linear-to-br from-accent/40 to-surface p-7 sm:p-8"
+                data-reveal
+              >
+                <span className="mb-7 grid size-12 place-items-center rounded-2xl bg-accent/60 text-rose">
+                  <Icon name="trophy" width="24" height="24" />
+                </span>
+                <p className="mb-3 text-xs font-medium text-rose">
+                  20 de junho de 2026
+                </p>
+                <h3 className="font-display text-2xl font-semibold tracking-tight">
+                  Code League 2026
                 </h3>
-                <p className="mt-2 text-sm">Indicação Atlas Technologies</p>
-                <p className="mt-3 text-xs leading-6 text-muted">
-                  Nossa equipe recebeu a Indicação Atlas no hackathon de
-                  soluções para a área da saúde. Uma experiência de colaboração,
-                  construção de ideias e apresentação de uma solução aos
+                <p className="mt-2 text-sm font-medium text-rose">
+                  Indicação Atlas Technologies
+                </p>
+                <p className="mt-4 text-[15px] leading-6 text-muted">
+                  Reconhecimento da nossa equipe no hackathon de soluções para a
+                  saúde. Colaboração, ideias e uma solução apresentada aos
                   avaliadores.
                 </p>
               </article>
-              <article className="timeline-item">
-                <p className="eyebrow !mb-3">
-                  Na prática / Aprendizado contínuo
+              <article className="surface p-7 sm:p-8" data-reveal>
+                <span className="mb-7 grid size-12 place-items-center rounded-2xl bg-white/5 text-muted">
+                  <Icon name="arrow" width="24" height="24" />
+                </span>
+                <p className="mb-3 text-xs font-medium text-muted">
+                  Sempre · Na prática
                 </p>
-                <h3 className="text-lg tracking-[-.035em]">
-                  Do exercício ao projeto
+                <h3 className="font-display text-2xl font-semibold tracking-tight">
+                  Do exercício ao projeto.
                 </h3>
-                <p className="mt-3 text-sm leading-7 text-muted">
+                <p className="mt-4 text-[15px] leading-6 text-muted">
                   Um Campo Minado para explorar matrizes em Python. Um portfólio
-                  para experimentar interfaces. Pequenos projetos, novas
-                  possibilidades de aprender.
+                  para experimentar interfaces. Novas possibilidades de
+                  aprender.
                 </p>
               </article>
             </div>
@@ -157,111 +172,105 @@ export default function Home() {
         </section>
         <section
           id="setup"
-          className="section-space border-t border-line bg-surface/30"
+          className="section-space"
           aria-labelledby="setup-title"
         >
-          <div className="site-container" data-reveal>
-            <div className="flex flex-wrap items-end justify-between gap-5">
+          <div className="site-container">
+            <div
+              className="mb-10 flex flex-wrap items-end justify-between gap-5"
+              data-reveal
+            >
               <div>
-                <p className="eyebrow">04 / Meu espaço</p>
+                <p className="eyebrow">Meu espaço</p>
                 <h2 id="setup-title" className="section-title">
-                  Onde as ideias{" "}
-                  <span className="font-editorial italic text-rose">
-                    acontecem.
-                  </span>
+                  Pensado para criar.
+                  <br />
+                  <span className="text-muted">E aproveitar o caminho.</span>
                 </h2>
               </div>
-              <p className="max-w-xs text-xs leading-6 text-muted">
-                Entre uma aula, algumas linhas de código
-                <br className="hidden sm:block" /> e uma partida no fim do dia.
+              <p className="max-w-xs text-base leading-7 text-muted">
+                Entre uma aula, algumas linhas de código e uma partida no fim do
+                dia.
               </p>
             </div>
-            <div className="relative my-9 overflow-hidden rounded-xl border border-line bg-background">
-              <div className="absolute left-6 top-5 flex items-center gap-2 font-mono text-[9px] uppercase tracking-[.16em] text-muted">
-                <span className="status-dot" />
-                Meu setup
+            <div className="surface overflow-hidden" data-reveal>
+              <div className="setup-stage relative px-0 pb-4 pt-6 sm:px-12">
+                <SetupArt />
+                <p className="absolute bottom-5 right-6 text-[11px] text-muted">
+                  Ilustração do setup
+                </p>
               </div>
-              <SetupArt />
-              <p className="absolute bottom-4 right-5 font-mono text-[8px] uppercase tracking-widest text-muted">
-                Ilustração do espaço
-              </p>
-            </div>
-            <div className="grid gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
-              {setup.map((item) => (
-                <div
-                  key={item.type}
-                  className="flex items-start gap-4 border-b border-line py-6"
-                >
-                  <span className="grid size-10 shrink-0 place-items-center rounded-lg border border-line text-rose">
-                    <Icon name={item.icon} />
-                  </span>
-                  <div>
-                    <p className="mb-1 font-mono text-[9px] uppercase tracking-[.15em] text-muted">
-                      {item.type}
-                    </p>
-                    <h3 className="text-sm">{item.name}</h3>
-                    <p className="mt-1.5 text-[11px] text-muted">
-                      {item.detail}
-                    </p>
+              <div className="grid px-6 sm:grid-cols-2 sm:px-8 lg:grid-cols-3">
+                {setup.map((item) => (
+                  <div
+                    key={item.type}
+                    className="flex items-start gap-4 border-t border-line py-7 sm:pr-5"
+                  >
+                    <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-white/5 text-rose">
+                      <Icon name={item.icon} />
+                    </span>
+                    <div>
+                      <p className="mb-1 text-xs text-muted">{item.type}</p>
+                      <h3 className="text-[15px] font-medium">{item.name}</h3>
+                      <p className="mt-1 text-xs leading-5 text-muted">
+                        {item.detail}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </section>
         <section
           id="contato"
-          className="relative overflow-hidden border-t border-line py-24 sm:py-32"
+          className="section-space"
           aria-labelledby="contact-title"
         >
-          <div className="contact-glow pointer-events-none absolute inset-0" />
-          <div className="site-container relative" data-reveal>
-            <p className="eyebrow">05 / A próxima conversa</p>
-            <div className="grid items-end gap-10 lg:grid-cols-[1.3fr_1fr]">
-              <div>
-                <h2
-                  id="contact-title"
-                  className="text-5xl leading-[1.12] font-medium tracking-[-.06em] sm:text-6xl"
-                >
-                  Boas ideias começam
+          <div className="site-container">
+            <div
+              className="contact-panel surface p-7 sm:p-12 lg:p-16"
+              data-reveal
+            >
+              <div className="mx-auto max-w-2xl text-center">
+                <p className="eyebrow">Vamos conversar</p>
+                <h2 id="contact-title" className="section-title">
+                  Seu próximo projeto.
                   <br />
-                  com um{" "}
-                  <span className="font-editorial italic text-rose">olá.</span>
+                  Nossa próxima conversa.
                 </h2>
-                <p className="mt-6 max-w-md text-sm leading-7 text-muted">
-                  Uma oportunidade, um projeto ou uma troca de ideias?
-                  <br />
-                  Vamos nos conectar.
+                <p className="section-description mx-auto">
+                  Uma oportunidade, uma ideia ou só um olá.
+                  <br className="hidden sm:block" /> Estou por aqui.
                 </p>
               </div>
-              <div className="space-y-3">
+              <div className="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
                 <a
-                  className="contact-link"
+                  className="contact-link soft-press"
                   href={profile.linkedin}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <span>
-                    <span className="mb-1 block font-mono text-[9px] uppercase tracking-[.12em] text-muted">
-                      Vamos conversar
-                    </span>
-                    LinkedIn
-                  </span>
+                  <div>
+                    <p className="text-lg font-semibold">LinkedIn</p>
+                    <p className="mt-1 text-sm text-muted">
+                      Vamos nos conectar
+                    </p>
+                  </div>
                   <Icon name="arrow" />
                 </a>
                 <a
-                  className="contact-link"
+                  className="contact-link soft-press"
                   href={profile.github}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <span>
-                    <span className="mb-1 block font-mono text-[9px] uppercase tracking-[.12em] text-muted">
-                      Acompanhe o código
-                    </span>
-                    GitHub{" "}
-                    <span className="ml-1 text-xs text-muted">/ Gapxz</span>
-                  </span>
+                  <div>
+                    <p className="text-lg font-semibold">GitHub</p>
+                    <p className="mt-1 text-sm text-muted">
+                      Acompanhe o código · Gapxz
+                    </p>
+                  </div>
                   <Icon name="arrow" />
                 </a>
               </div>
@@ -269,27 +278,24 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <footer className="border-t border-line">
-        <div className="site-container flex flex-wrap items-center justify-between gap-5 py-8">
+      <footer className="site-container">
+        <div className="flex flex-wrap items-center justify-between gap-5 border-t border-line py-7">
           <a
             href="#inicio"
             aria-label="Voltar ao início"
-            className="text-xl font-semibold tracking-[-.07em]"
+            className="flex min-h-11 items-center text-2xl font-semibold tracking-[-.06em]"
           >
             gap<span className="text-rose">.</span>
           </a>
-          <p className="text-[10px] text-muted">
-            © 2026 Gustavo Souza Schroder · Feito com curiosidade.
-          </p>
+          <p className="text-xs text-muted">© 2026 Gustavo Souza Schroder</p>
           <a
             href="#inicio"
-            className="flex items-center gap-2 text-[10px] text-muted"
+            className="soft-press flex min-h-11 items-center gap-2 rounded-full px-3 text-xs text-muted"
           >
-            De volta ao topo <Icon name="arrow" width="13" height="13" />
+            De volta ao topo <Icon name="arrow" width="14" height="14" />
           </a>
         </div>
       </footer>
-      <Motion />
     </>
   );
 }

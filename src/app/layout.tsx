@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
-import { Sora } from "next/font/google";
+import { MotionProvider } from "@/components/motion";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
-const sora = Sora({
-  subsets: ["latin"],
-  variable: "--font-sora",
-  display: "swap",
-});
 export const metadata: Metadata = {
   metadataBase: new URL("https://gapxz.dev"),
   title: "Gap — Gustavo Souza Schroder | Portfólio",
@@ -28,14 +23,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body
-        className={`${sora.variable} min-h-screen bg-background font-sans font-normal text-foreground antialiased`}
-      >
+      <body className="min-h-screen bg-background font-sans font-normal text-foreground antialiased">
         <a href="#conteudo" className="skip-link">
           Pular para o conteúdo
         </a>
-        <SiteHeader />
-        {children}
+        <MotionProvider>
+          <SiteHeader />
+          {children}
+        </MotionProvider>
       </body>
     </html>
   );

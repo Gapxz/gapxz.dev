@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Icon } from "./icon";
 const items = [
   ["Sobre", "sobre"],
@@ -11,6 +11,8 @@ const items = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
+  const [scrolled, setScrolled] = useState(false);
+  const toggle = useRef<HTMLButtonElement>(null);
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -23,32 +25,56 @@ export function SiteHeader() {
     document
       .querySelectorAll("main section[id]")
       .forEach((section) => observer.observe(section));
-    const escape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      setScrolled(window.scrollY > 16);
     };
-    document.addEventListener("keydown", escape);
+    const scroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    const resize = () => {
+      if (innerWidth >= 768) setOpen(false);
+    };
+    update();
+    window.addEventListener("scroll", scroll, { passive: true });
+    window.addEventListener("resize", resize);
     return () => {
       observer.disconnect();
-      document.removeEventListener("keydown", escape);
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", scroll);
+      window.removeEventListener("resize", resize);
     };
   }, []);
+  useEffect(() => {
+    if (!open) return;
+    const escape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        toggle.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", escape);
+    return () => document.removeEventListener("keydown", escape);
+  }, [open]);
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/8 bg-background/90 backdrop-blur-xl">
-      <div className="site-container flex h-20 items-center justify-between">
+    <header
+      className="site-header fixed inset-x-0 top-0 z-50"
+      data-scrolled={scrolled}
+      data-open={open}
+    >
+      <div className="site-container nav-entrance flex h-[72px] items-center justify-between gap-5">
         <a
           href="#inicio"
           aria-label="Gap, início"
           onClick={() => setOpen(false)}
-          className="text-2xl font-semibold tracking-[-.08em]"
+          className="flex min-h-11 items-center text-[25px] font-semibold tracking-[-.065em]"
         >
           gap<span className="text-rose">.</span>
-          <span className="ml-1 font-mono text-xs font-normal tracking-normal text-muted">
-            / dev
-          </span>
         </a>
         <nav
           aria-label="Navegação principal"
-          className="hidden items-center gap-8 md:flex"
+          className="hidden items-center gap-1 md:flex"
         >
           {items.map(([label, id]) => (
             <a
@@ -61,38 +87,47 @@ export function SiteHeader() {
             </a>
           ))}
         </nav>
-        <a
-          href="#contato"
-          className="hidden items-center gap-2 text-xs lg:flex"
-        >
-          <span className="status-dot" />
-          Vamos conversar <Icon name="arrow" width="14" height="14" />
-        </a>
-        <button
-          type="button"
-          aria-label={open ? "Fechar menu" : "Abrir menu"}
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          onClick={() => setOpen(!open)}
-          className="grid size-11 place-items-center rounded-lg border border-line md:hidden"
-        >
-          <Icon name={open ? "close" : "menu"} />
-        </button>
+        <div className="flex items-center gap-3">
+          <a
+            href="#contato"
+            onClick={() => setOpen(false)}
+            className="soft-press hidden min-h-11 items-center gap-2 rounded-full border border-white/10 bg-white/[.06] px-4 text-[13px] font-semibold sm:inline-flex"
+          >
+            Vamos conversar <Icon name="arrow" width="13" height="13" />
+          </a>
+          <button
+            ref={toggle}
+            type="button"
+            className="icon-button soft-press md:hidden"
+            aria-label={open ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            onClick={() => setOpen(!open)}
+          >
+            <Icon name={open ? "close" : "menu"} />
+          </button>
+        </div>
       </div>
       <nav
         id="mobile-nav"
-        aria-label="Navegação mobile"
         hidden={!open}
-        className="border-t border-line bg-background px-6 pb-5 md:hidden"
+        aria-label="Navegação mobile"
+        className="mobile-menu site-container pb-5 md:hidden"
       >
         {items.map(([label, id]) => (
           <a
             key={id}
             href={`#${id}`}
             onClick={() => setOpen(false)}
-            className="block border-b border-line py-4 text-sm"
+            className="flex min-h-14 items-center justify-between border-t border-line px-1 text-lg font-medium"
           >
             {label}
+            <Icon
+              name="chevron"
+              width="17"
+              height="17"
+              className="text-muted"
+            />
           </a>
         ))}
       </nav>

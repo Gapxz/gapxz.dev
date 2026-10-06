@@ -1,5 +1,12 @@
 import type { ReactNode, SVGProps } from "react";
 const paths: Record<string, ReactNode> = {
+  pause: (
+    <>
+      <path d="M8 5v14M16 5v14" strokeWidth="3" />
+    </>
+  ),
+  play: <path d="m8 4 12 8-12 8V4Z" fill="currentColor" stroke="none" />,
+  chevron: <path d="m9 5 7 7-7 7" />,
   arrow: <path d="M5 19 19 5M5 5h14v14" />,
   down: <path d="M12 4v16m-6-6 6 6 6-6" />,
   code: <path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-15-2 18" />,
