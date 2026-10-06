@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState, type FormEvent } from "react";
 import type { Project } from "@/lib/project-model";
+import Link from "next/link";
 import { Icon } from "@/components/icon";
 
 const fields = [
@@ -216,9 +217,9 @@ export default function AdminPage() {
             Cadastre, atualize e organize os projetos do seu portfólio.
           </p>
         </div>
-        <a href="/#projetos" className="button-secondary soft-press">
+        <Link href="/#projetos" className="button-secondary soft-press">
           Ver portfólio <Icon name="arrow" width="16" height="16" />
-        </a>
+        </Link>
       </div>
       {!authenticated ? (
         <form onSubmit={login} className="surface max-w-xl p-7 sm:p-9">
