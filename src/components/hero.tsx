@@ -7,7 +7,7 @@ export function Hero() {
       className="relative isolate overflow-hidden pt-20"
     >
       <div className="hero-grid pointer-events-none absolute inset-0 -z-10" />
-      <div className="site-container relative grid min-h-[730px] items-center gap-8 py-16 lg:grid-cols-[1.15fr_1fr] lg:py-24">
+      <div className="site-container relative grid min-h-[650px] items-center gap-8 py-16 lg:grid-cols-[1.15fr_1fr] lg:py-24">
         <div className="relative z-10">
           <p className="mb-8 flex flex-wrap items-center gap-3 font-mono text-[10px] uppercase tracking-[.17em] text-muted">
             <span className="h-px w-7 bg-rose" />
@@ -15,7 +15,7 @@ export function Hero() {
           </p>
           <h1
             id="hero-title"
-            className="max-w-3xl text-[clamp(3.1rem,5.5vw,5.3rem)] leading-[1.08] font-medium tracking-[-.065em]"
+            className="max-w-3xl text-[clamp(2.15rem,4.4vw,4.25rem)] leading-[1.08] font-medium tracking-[-.065em]"
           >
             Ideias em código.
             <br />
@@ -44,7 +44,7 @@ export function Hero() {
           </div>
         </div>
         <div
-          className="hero-art relative mx-auto aspect-square w-full max-w-[480px]"
+          className="hero-art relative mx-auto aspect-square w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[480px]"
           aria-hidden="true"
           data-parallax
         >

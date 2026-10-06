@@ -68,19 +68,21 @@ export function Projects() {
                 </p>
                 <span className="text-[9px] text-rose">{project.status}</span>
               </div>
-              <button
-                type="button"
-                onClick={() => setSelected(project)}
-                aria-label={`Conhecer projeto ${project.name}`}
-                className="flex w-full items-center justify-between gap-3 text-left"
-              >
-                <h3 className="text-2xl font-medium tracking-[-.05em]">
-                  {project.name}
-                </h3>
-                <span className="grid size-9 shrink-0 place-items-center rounded-full border border-line transition-colors group-hover:bg-accent">
-                  <Icon name="arrow" width="16" height="16" />
-                </span>
-              </button>
+              <h3>
+                <button
+                  type="button"
+                  onClick={() => setSelected(project)}
+                  aria-label={`Conhecer projeto ${project.name}`}
+                  className="flex w-full items-center justify-between gap-3 text-left"
+                >
+                  <span className="text-2xl font-medium tracking-[-.05em]">
+                    {project.name}
+                  </span>
+                  <span className="grid size-9 shrink-0 place-items-center rounded-full border border-line transition-colors group-hover:bg-accent">
+                    <Icon name="arrow" width="16" height="16" />
+                  </span>
+                </button>
+              </h3>
               <p className="mt-3 max-w-sm text-xs leading-6 text-muted">
                 {project.description}
               </p>

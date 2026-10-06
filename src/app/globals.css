@@ -190,11 +190,6 @@ button:focus-visible {
     left: -45px;
   }
 }
-@media (max-width: 1023px) {
-  .hero-art {
-    max-width: 340px;
-  }
-}
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

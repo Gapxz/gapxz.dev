@@ -8,7 +8,7 @@ import { profile, setup } from "@/lib/portfolio";
 export default function Home() {
   return (
     <>
-      <main id="conteudo">
+      <main id="conteudo" tabIndex={-1}>
         <Hero />
         <section
           id="sobre"

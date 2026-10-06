@@ -2,11 +2,11 @@ export function ProjectArt({ id }: { id: string }) {
   if (id === "campo-minado")
     return (
       <div className="project-art mine-art" aria-hidden="true">
-        <div className="grid -rotate-6 grid-cols-7 gap-1.5">
-          {Array.from({ length: 35 }, (_, i) => (
+        <div className="grid -rotate-6 grid-cols-9 gap-1">
+          {Array.from({ length: 81 }, (_, i) => (
             <span
               key={i}
-              className={`grid size-7 place-items-center rounded-sm border text-[10px] font-mono ${[8, 9, 15, 16, 17, 22, 23, 24].includes(i) ? "border-transparent bg-white/[.02] text-rose" : "border-white/10 bg-white/5 text-muted"}`}
+              className={`grid size-5 place-items-center rounded-sm border text-[10px] font-mono ${[8, 9, 15, 16, 17, 22, 23, 24].includes(i) ? "border-transparent bg-white/[.02] text-rose" : "border-white/10 bg-white/5 text-muted"}`}
             >
               {
                 (

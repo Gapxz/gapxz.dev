@@ -1,34 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# gapxz.dev
 
-## Getting Started
+Portfólio pessoal de Gustavo Souza Schroder (Gap). Interface em português, com identidade vinho, projetos, formação, reconhecimento no Code League e setup.
 
-First, run the development server:
+## Executar
 
-```bash
+Requer Node.js 20.9 ou superior e npm.
+
+```sh
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra http://localhost:3000. Para verificar a versão de produção:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+npm run build
+npm start
+```
 
-## Learn More
+## Tecnologias
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js 16 e React 19, com TypeScript.
+- Tailwind CSS 4 para layout, cores, tipografia e responsividade.
+- CSS e SVG locais para as ilustrações; sem dependência de imagens externas.
+- Animações CSS e parallax leve, desativados com a preferência de movimento reduzido.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+O conteúdo é pré-renderizado. Não há API, banco ou serviço de back-end neste portfólio. O contato é feito pelos perfis públicos do LinkedIn e GitHub.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Atualizar conteúdo
 
-## Deploy on Vercel
+- `src/lib/portfolio.ts`: perfis públicos, projetos, detalhes e equipamentos.
+- `src/app/page.tsx`: apresentação, formação, reconhecimento e seções.
+- `src/app/globals.css`: tokens visuais e efeitos. A cor base é `#49111c`.
+- `src/components/hero.tsx`: abertura e monograma.
+- `src/components/setup-art.tsx`: ilustração vetorial do setup.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Os projetos têm filtros por tecnologia e detalhes em diálogo acessível por teclado. As ilustrações representam os projetos e o setup; não são capturas de tela nem fotografias.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Verificar
+
+```sh
+npm run lint
+npm run typecheck
+npm run format:check
+npm run build
+```
+
+Na revisão visual, conferir desktop e celular, navegação por âncoras, menu mobile, filtros, abertura e fechamento dos projetos por Escape, links de contato e preferência de movimento reduzido.
