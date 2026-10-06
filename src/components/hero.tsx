@@ -8,41 +8,32 @@ export function Hero() {
     <section
       id="inicio"
       aria-labelledby="hero-title"
-      className="hero relative isolate overflow-hidden pt-20"
+      className="relative isolate overflow-hidden pt-20"
     >
-      <div className="site-container grid items-center gap-8 pb-16 pt-16 sm:pt-20 lg:min-h-[740px] lg:grid-cols-[1.16fr_1fr] lg:gap-3 lg:py-24">
+      <div className="site-container grid items-center gap-8 pb-16 pt-14 sm:pt-16 lg:min-h-[680px] lg:grid-cols-[1.15fr_1fr] lg:gap-5 lg:py-20">
         <div className="relative z-10">
-          <div
-            className="hero-entrance mb-8 flex items-center gap-3"
-            style={entrance(80)}
-          >
-            <span className="grid size-9 place-items-center rounded-full border border-rose/15 bg-accent/40 text-sm font-semibold text-rose">
-              G
-            </span>
-            <p className="text-sm font-medium text-muted">
-              Gustavo Souza Schroder
-            </p>
-          </div>
+          <p className="hero-entrance eyebrow !mb-7" style={entrance(60)}>
+            Gustavo Souza Schroder <span className="mx-2">/</span> Portfólio
+          </p>
           <h1
             id="hero-title"
             className="hero-title hero-entrance"
-            style={entrance(160)}
+            style={entrance(150)}
           >
-            <span>Ideias em código.</span>
-            <span>Curiosidade em</span>
-            <span className="accent-text">movimento.</span>
+            <span>Café, código</span>
+            <span>e boas ideias.</span>
+            <span className="accent-text">Meus projetos.</span>
           </h1>
           <p
-            className="hero-entrance mt-7 max-w-[450px] text-[17px] leading-[1.6] text-muted sm:text-lg"
-            style={entrance(280)}
+            className="hero-entrance mt-6 max-w-[440px] text-[17px] leading-[1.65] text-muted"
+            style={entrance(260)}
           >
-            Desenvolvedor em formação. Aprendo criando
-            <br className="hidden xl:block" /> com Python, interfaces e uma boa
-            dose de curiosidade.
+            Um lugar para reunir o que construo, compartilhar o que aprendo e
+            dar vida à próxima ideia. Python, web e desenvolvimento na prática.
           </p>
           <div
             className="hero-entrance mt-8 flex flex-wrap gap-3"
-            style={entrance(400)}
+            style={entrance(370)}
           >
             <a href="#projetos" className="button-primary soft-press">
               Explorar projetos <Icon name="arrow" width="16" height="16" />
@@ -53,31 +44,17 @@ export function Hero() {
           </div>
           <p
             className="hero-entrance mt-7 flex items-center gap-2 text-xs text-muted"
-            style={entrance(520)}
+            style={entrance(480)}
           >
             <span className="status-dot" />
-            Aberto a oportunidades de estágio
+            Estudante de ADS · Aberto a estágio
           </p>
         </div>
         <div
-          className="hero-entrance mx-auto w-full max-w-[420px] lg:max-w-[510px]"
-          style={entrance(240)}
+          className="hero-entrance mx-auto w-full max-w-[360px] lg:max-w-[480px]"
+          style={entrance(220)}
         >
           <HeroScene />
-        </div>
-      </div>
-      <div className="site-container">
-        <div className="flex flex-wrap items-center justify-between gap-4 border-t border-line py-6 text-xs text-muted">
-          <p>Baseado em Pelotas, RS</p>
-          <p className="hidden sm:block">
-            Estudando ADS. Construindo o próximo passo.
-          </p>
-          <a
-            href="#sobre"
-            className="soft-press flex min-h-11 items-center gap-2 rounded-full px-3"
-          >
-            Continue explorando <Icon name="down" width="14" height="14" />
-          </a>
         </div>
       </div>
     </section>
