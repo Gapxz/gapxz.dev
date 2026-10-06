@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local administration credentials and backups
+.portfolio-admin.key
+src/data/projects.json.bak
+src/data/*.tmp
+backend/__pycache__/
+
