@@ -19,6 +19,15 @@ export default function Home() {
       <main id="conteudo" tabIndex={-1}>
         <Hero />
         <section
+          id="projetos"
+          className="section-space"
+          aria-label="Projetos selecionados"
+        >
+          <div className="site-container" data-reveal>
+            <Projects />
+          </div>
+        </section>
+        <section
           id="sobre"
           className="section-space"
           aria-labelledby="about-title"
@@ -36,7 +45,7 @@ export default function Home() {
             </div>
             <div className="grid gap-5 lg:grid-cols-[1.25fr_1fr]">
               <article className="surface p-7 sm:p-10" data-reveal>
-                <span className="mb-7 grid size-12 place-items-center rounded-2xl bg-accent/50 text-rose">
+                <span className="mb-7 grid size-12 place-items-center rounded-2xl bg-fill text-foreground">
                   <Icon name="code" width="24" height="24" />
                 </span>
                 <h3 className="font-display text-2xl font-semibold tracking-tight">
@@ -52,7 +61,7 @@ export default function Home() {
                   oportunidade de estágio para aprender em equipe e contribuir
                   com projetos reais.
                 </p>
-                <div className="mt-7 flex items-center gap-2 border-t border-line pt-6 text-sm text-rose">
+                <div className="mt-7 flex items-center gap-2 border-t border-line pt-6 text-sm text-foreground">
                   <span className="status-dot" />
                   ADS · Senac RS · 3º semestre
                 </div>
@@ -78,7 +87,7 @@ export default function Home() {
                   </p>
                   <a
                     href="#setup"
-                    className="soft-press mt-4 inline-flex min-h-11 items-center gap-2 rounded-lg text-sm font-medium text-rose"
+                    className="soft-press mt-4 inline-flex min-h-11 items-center gap-2 rounded-lg text-sm font-medium text-foreground"
                   >
                     Conheça meu espaço{" "}
                     <Icon name="arrow" width="15" height="15" />
@@ -88,15 +97,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section
-          id="projetos"
-          className="section-space"
-          aria-label="Projetos selecionados"
-        >
-          <div className="site-container" data-reveal>
-            <Projects />
-          </div>
-        </section>
+
         <section
           id="jornada"
           className="section-space"
@@ -115,7 +116,7 @@ export default function Home() {
             </div>
             <div className="grid gap-5 md:grid-cols-3">
               <article className="surface p-7 sm:p-8" data-reveal>
-                <span className="mb-7 grid size-12 place-items-center rounded-2xl bg-white/5 text-muted">
+                <span className="mb-7 grid size-12 place-items-center rounded-2xl bg-fill text-muted">
                   <Icon name="code" width="24" height="24" />
                 </span>
                 <p className="mb-3 text-xs font-medium text-muted">
@@ -129,20 +130,17 @@ export default function Home() {
                   de dados, redes e desenvolvimento de software.
                 </p>
               </article>
-              <article
-                className="surface bg-linear-to-br from-accent/40 to-surface p-7 sm:p-8"
-                data-reveal
-              >
-                <span className="mb-7 grid size-12 place-items-center rounded-2xl bg-accent/60 text-rose">
+              <article className="surface  p-7 sm:p-8" data-reveal>
+                <span className="mb-7 grid size-12 place-items-center rounded-2xl bg-fill text-foreground">
                   <Icon name="trophy" width="24" height="24" />
                 </span>
-                <p className="mb-3 text-xs font-medium text-rose">
+                <p className="mb-3 text-xs font-medium text-foreground">
                   20 de junho de 2026
                 </p>
                 <h3 className="font-display text-2xl font-semibold tracking-tight">
                   Code League 2026
                 </h3>
-                <p className="mt-2 text-sm font-medium text-rose">
+                <p className="mt-2 text-sm font-medium text-foreground">
                   Indicação Atlas Technologies
                 </p>
                 <p className="mt-4 text-[15px] leading-6 text-muted">
@@ -152,7 +150,7 @@ export default function Home() {
                 </p>
               </article>
               <article className="surface p-7 sm:p-8" data-reveal>
-                <span className="mb-7 grid size-12 place-items-center rounded-2xl bg-white/5 text-muted">
+                <span className="mb-7 grid size-12 place-items-center rounded-2xl bg-fill text-muted">
                   <Icon name="arrow" width="24" height="24" />
                 </span>
                 <p className="mb-3 text-xs font-medium text-muted">
@@ -206,7 +204,7 @@ export default function Home() {
                     key={item.type}
                     className="flex items-start gap-4 border-t border-line py-7 sm:pr-5"
                   >
-                    <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-white/5 text-rose">
+                    <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-fill text-foreground">
                       <Icon name={item.icon} />
                     </span>
                     <div>
@@ -279,15 +277,25 @@ export default function Home() {
         </section>
       </main>
       <footer className="site-container">
+        <div className="flex justify-end">
+          <a
+            href="/admin"
+            className="flex min-h-11 items-center text-xs text-muted"
+          >
+            Gerenciar projetos
+          </a>
+        </div>
         <div className="flex flex-wrap items-center justify-between gap-5 border-t border-line py-7">
           <a
             href="#inicio"
             aria-label="Voltar ao início"
             className="flex min-h-11 items-center text-2xl font-semibold tracking-[-.06em]"
           >
-            gap<span className="text-rose">.</span>
+            gap<span className="text-foreground">.</span>
           </a>
-          <p className="text-xs text-muted">© 2026 Gustavo Souza Schroder</p>
+          <p className="text-xs text-muted">
+            © 2026 Gustavo Souza Schroder · Portfólio
+          </p>
           <a
             href="#inicio"
             className="soft-press flex min-h-11 items-center gap-2 rounded-full px-3 text-xs text-muted"
