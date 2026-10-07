@@ -46,9 +46,7 @@ export function ProjectArt({ id }: { id: string }) {
             <span className="ml-auto text-[9px] text-muted">gapxz.dev</span>
           </div>
           <div className="px-6 py-7">
-            <span className="text-[9px] text-muted">
-              Gustavo Souza Schroder / Portfólio
-            </span>
+            <span className="text-[9px] text-muted">Gap / Portfólio</span>
             <p className="mt-3 text-2xl leading-tight font-semibold tracking-tight">
               Café, código
               <br />e boas ideias.
