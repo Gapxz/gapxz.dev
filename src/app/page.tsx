@@ -291,11 +291,9 @@ export default function Home() {
             aria-label="Voltar ao início"
             className="flex min-h-11 items-center text-2xl font-semibold tracking-[-.06em]"
           >
-            gap<span className="text-foreground">.</span>
+            Gap
           </a>
-          <p className="text-xs text-muted">
-            © 2026 Gustavo Souza Schroder · Portfólio
-          </p>
+          <p className="text-xs text-muted">© 2026 Gap · Portfólio</p>
           <a
             href="#inicio"
             className="soft-press flex min-h-11 items-center gap-2 rounded-full px-3 text-xs text-muted"
