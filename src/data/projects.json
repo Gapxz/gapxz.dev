@@ -22,16 +22,16 @@
     "category": "Web",
     "kind": "Projeto pessoal · Web",
     "description": "Meu espaço na internet. Feito para acompanhar a jornada.",
-    "summary": "Este portfólio reúne os projetos, os estudos e as coisas que fazem parte do meu dia a dia. Uma experiência responsiva com a minha identidade visual.",
-    "tags": ["Tailwind CSS", "Next.js", "TypeScript"],
+    "summary": "Meu portfólio para reunir projetos e acompanhar novos repositórios. Interface em Tailwind CSS com temas claro e escuro, filtros por linguagem e favoritos. Um editor local em Python permite cadastrar e atualizar o catálogo.",
     "status": "Você está aqui",
-    "details": [
-      "Interface responsiva construída com Tailwind CSS e componentes React.",
-      "Animações sutis, parallax e respeito às preferências de movimento reduzido.",
-      "Conteúdo organizado em componentes e dados fáceis de atualizar."
-    ],
     "learning": "Dar forma às ideias na interface, com atenção à hierarquia visual, acessibilidade e navegação em diferentes telas.",
-    "url": "https://github.com/Gapxz/gapxz.dev",
-    "languages": ["TypeScript", "HTML", "CSS"]
+    "languages": ["TypeScript", "HTML", "CSS", "Python"],
+    "tags": ["Tailwind CSS", "Next.js", "TypeScript"],
+    "details": [
+      "Interface responsiva com temas claro e escuro e animações acessíveis.",
+      "Busca, filtros por linguagem e favoritos salvos no navegador.",
+      "Editor local em Python com autenticação, validação e backup do catálogo."
+    ],
+    "url": "https://github.com/Gapxz/gapxz.dev"
   }
 ]
