@@ -38,7 +38,7 @@ export function SiteHeader() {
       if (!frame) frame = requestAnimationFrame(update);
     };
     const resize = () => {
-      if (innerWidth >= 768) setOpen(false);
+      if (innerWidth >= 1024) setOpen(false);
     };
     update();
     window.addEventListener("scroll", scroll, { passive: true });
@@ -67,21 +67,18 @@ export function SiteHeader() {
       data-scrolled={scrolled}
       data-open={open}
     >
-      <div className="site-container nav-entrance flex h-[72px] items-center justify-between gap-5">
+      <div className="site-container nav-entrance flex h-[88px] items-center justify-between gap-3">
         <a
           href={sectionHref("inicio")}
           aria-label="Gap, início"
           onClick={() => setOpen(false)}
-          className="flex min-h-11 items-center gap-3 text-[25px] font-semibold tracking-[-.065em]"
+          className="flex min-h-11 items-center gap-3 text-[36px] font-semibold tracking-[-.065em]"
         >
-          <span>gap.</span>
-          <span className="hidden border-l border-line pl-3 text-xs font-medium tracking-normal text-muted xl:inline">
-            Portfólio
-          </span>
+          <span>Gap</span>
         </a>
         <nav
           aria-label="Navegação principal"
-          className="hidden items-center gap-1 md:flex"
+          className="hidden items-center gap-1 lg:flex"
         >
           {items.map(([label, id]) => (
             <a
@@ -99,14 +96,14 @@ export function SiteHeader() {
           <a
             href={sectionHref("contato")}
             onClick={() => setOpen(false)}
-            className="soft-press hidden min-h-11 items-center gap-2 rounded-full border border-line bg-foreground text-background px-4 text-[13px] font-semibold sm:inline-flex"
+            className="soft-press hidden min-h-11 items-center gap-2 rounded-full border border-line bg-foreground text-background px-4 text-[16px] font-semibold xl:inline-flex"
           >
             Vamos conversar <Icon name="arrow" width="13" height="13" />
           </a>
           <button
             ref={toggle}
             type="button"
-            className="icon-button soft-press md:hidden"
+            className="icon-button soft-press lg:hidden"
             aria-label={open ? "Fechar menu" : "Abrir menu"}
             aria-expanded={open}
             aria-controls="mobile-nav"
@@ -120,14 +117,14 @@ export function SiteHeader() {
         id="mobile-nav"
         hidden={!open}
         aria-label="Navegação mobile"
-        className="mobile-menu site-container pb-5 md:hidden"
+        className="mobile-menu site-container pb-5 lg:hidden"
       >
         {items.map(([label, id]) => (
           <a
             key={id}
             href={sectionHref(id)}
             onClick={() => setOpen(false)}
-            className="flex min-h-14 items-center justify-between border-t border-line px-1 text-lg font-medium"
+            className="flex min-h-14 items-center justify-between border-t border-line px-1 text-xl font-semibold"
           >
             {label}
             <Icon
