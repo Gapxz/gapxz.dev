@@ -8,12 +8,15 @@ export function Hero() {
     <section
       id="inicio"
       aria-labelledby="hero-title"
-      className="relative isolate overflow-hidden pt-20"
+      className="relative isolate overflow-hidden pt-24"
     >
       <div className="site-container grid items-center gap-8 pb-16 pt-14 sm:pt-16 lg:min-h-[680px] lg:grid-cols-[1.15fr_1fr] lg:gap-5 lg:py-20">
         <div className="relative z-10">
-          <p className="hero-entrance eyebrow !mb-7" style={entrance(60)}>
-            Gustavo Souza Schroder <span className="mx-2">/</span> Portfólio
+          <p
+            className="hero-entrance mb-7 font-display text-5xl font-semibold tracking-[-.055em] sm:text-6xl"
+            style={entrance(60)}
+          >
+            Gap
           </p>
           <h1
             id="hero-title"
