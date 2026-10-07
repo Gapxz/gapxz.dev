@@ -4,13 +4,13 @@ import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://gapxz.dev"),
-  title: "Gap — Gustavo Souza Schroder | Portfólio",
+  title: "Gap | Portfólio",
   description:
-    "Gustavo Souza Schroder, estudante de ADS no Senac RS. Projetos em Python, desenvolvimento web e uma jornada de aprendizado na prática.",
+    "Gap, estudante de ADS no Senac RS. Projetos em Python, desenvolvimento web e uma jornada de aprendizado na prática.",
   openGraph: {
     title: "Gap — Ideias em código",
     description:
-      "O portfólio de Gustavo Souza Schroder. Python, desenvolvimento web e aprendizado na prática.",
+      "O portfólio de Gap. Python, desenvolvimento web e aprendizado na prática.",
     locale: "pt_BR",
     type: "website",
   },
