@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
 export const alt =
-  "Gustavo Souza Schroder — Café, código e boas ideias. Meu portfólio de projetos.";
+  "Gap — Café, código e boas ideias. Meu portfólio de projetos.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -31,8 +31,8 @@ export default async function OpenGraphImage() {
           fontSize: 24,
         }}
       >
-        <span style={{ fontWeight: 700 }}>gap. / Portfólio</span>
-        <span>Gustavo Souza Schroder</span>
+        <span style={{ fontWeight: 700 }}>Gap / Portfólio</span>
+        <span>Gap</span>
       </div>
       <div
         style={{
