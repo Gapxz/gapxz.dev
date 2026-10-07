@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { Icon } from "./icon";
-import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ThemeToggle } from "./theme-toggle";
 const items = [
   ["Projetos", "projetos"],
@@ -11,6 +11,8 @@ const items = [
   ["Contato", "contato"],
 ];
 export function SiteHeader() {
+  const pathname = usePathname();
+  const sectionHref = (id: string) => `${pathname === "/" ? "" : "/"}#${id}`;
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
   const [scrolled, setScrolled] = useState(false);
@@ -47,7 +49,7 @@ export function SiteHeader() {
       window.removeEventListener("scroll", scroll);
       window.removeEventListener("resize", resize);
     };
-  }, []);
+  }, [pathname]);
   useEffect(() => {
     if (!open) return;
     const escape = (event: KeyboardEvent) => {
@@ -66,8 +68,8 @@ export function SiteHeader() {
       data-open={open}
     >
       <div className="site-container nav-entrance flex h-[72px] items-center justify-between gap-5">
-        <Link
-          href="/#inicio"
+        <a
+          href={sectionHref("inicio")}
           aria-label="Gap, início"
           onClick={() => setOpen(false)}
           className="flex min-h-11 items-center gap-3 text-[25px] font-semibold tracking-[-.065em]"
@@ -76,31 +78,31 @@ export function SiteHeader() {
           <span className="hidden border-l border-line pl-3 text-xs font-medium tracking-normal text-muted xl:inline">
             Portfólio
           </span>
-        </Link>
+        </a>
         <nav
           aria-label="Navegação principal"
           className="hidden items-center gap-1 md:flex"
         >
           {items.map(([label, id]) => (
-            <Link
+            <a
               key={id}
-              href={`/#${id}`}
+              href={sectionHref(id)}
               aria-current={active === id ? "location" : undefined}
               className={`nav-link ${active === id ? "is-active" : ""}`}
             >
               {label}
-            </Link>
+            </a>
           ))}
         </nav>
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          <Link
-            href="/#contato"
+          <a
+            href={sectionHref("contato")}
             onClick={() => setOpen(false)}
             className="soft-press hidden min-h-11 items-center gap-2 rounded-full border border-line bg-foreground text-background px-4 text-[13px] font-semibold sm:inline-flex"
           >
             Vamos conversar <Icon name="arrow" width="13" height="13" />
-          </Link>
+          </a>
           <button
             ref={toggle}
             type="button"
@@ -121,9 +123,9 @@ export function SiteHeader() {
         className="mobile-menu site-container pb-5 md:hidden"
       >
         {items.map(([label, id]) => (
-          <Link
+          <a
             key={id}
-            href={`/#${id}`}
+            href={sectionHref(id)}
             onClick={() => setOpen(false)}
             className="flex min-h-14 items-center justify-between border-t border-line px-1 text-lg font-medium"
           >
@@ -134,7 +136,7 @@ export function SiteHeader() {
               height="17"
               className="text-muted"
             />
-          </Link>
+          </a>
         ))}
       </nav>
     </header>
