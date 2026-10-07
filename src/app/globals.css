@@ -38,7 +38,7 @@
 }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 100px;
+  scroll-padding-top: 112px;
 }
 body {
   overflow-x: clip;
@@ -113,7 +113,7 @@ input:focus-visible {
     @apply grid size-11 shrink-0 place-items-center rounded-full bg-fill text-foreground;
   }
   .nav-link {
-    @apply flex min-h-11 items-center rounded-full px-4 text-[13px] font-medium text-muted;
+    @apply flex min-h-11 items-center rounded-full px-4 text-[18px] font-semibold text-foreground;
     transition:
       color 0.2s,
       background 0.2s,
@@ -234,11 +234,10 @@ input:focus-visible {
 .theme-switch {
   position: relative;
   display: inline-flex;
-  min-width: 88px;
-  height: 44px;
+  flex-shrink: 0;
   padding: 4px;
   align-items: center;
-  border-radius: 24px;
+  border-radius: 28px;
   background: var(--color-fill);
   border: 1px solid var(--color-line);
 }
@@ -246,21 +245,30 @@ input:focus-visible {
   content: "";
   position: absolute;
   left: 4px;
-  width: 34px;
-  height: 34px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: var(--color-surface);
+  background: var(--control);
   box-shadow: 0 1px 4px #0002;
-  transition: transform 0.35s var(--ease-spring);
+  pointer-events: none;
+  transition:
+    transform 0.35s var(--ease-spring),
+    background 0.2s;
 }
 [data-theme="dark"] .theme-switch::before {
   transform: translateX(44px);
 }
-.theme-switch span {
+.theme-switch button {
   position: relative;
   display: grid;
-  width: 38px;
+  width: 44px;
+  height: 44px;
   place-items: center;
+  border-radius: 50%;
+  color: var(--color-muted);
+}
+.theme-switch button[aria-pressed="true"] {
+  color: var(--color-foreground);
 }
 .segmented-control {
   display: flex;
