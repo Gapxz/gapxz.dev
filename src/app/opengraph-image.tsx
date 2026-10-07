@@ -1,11 +1,16 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 
 export const alt =
-  "Gap — Gustavo Souza Schroder. Ideias em código, curiosidade em movimento.";
+  "Gustavo Souza Schroder — Café, código e boas ideias. Meu portfólio de projetos.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OpenGraphImage() {
+export default async function OpenGraphImage() {
+  const asset = await readFile(
+    join(process.cwd(), "public/images/coffee-mustache-code.png"),
+  );
   return new ImageResponse(
     <div
       style={{
@@ -14,9 +19,9 @@ export default function OpenGraphImage() {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        padding: "70px 80px",
-        background: "#09080b",
-        color: "#f5f5f7",
+        padding: "55px 65px",
+        background: "#f2f2f7",
+        color: "#1c1c1e",
       }}
     >
       <div
@@ -24,10 +29,9 @@ export default function OpenGraphImage() {
           display: "flex",
           justifyContent: "space-between",
           fontSize: 24,
-          color: "#e5a6b4",
         }}
       >
-        <span>gap.</span>
+        <span style={{ fontWeight: 700 }}>gap. / Portfólio</span>
         <span>Gustavo Souza Schroder</span>
       </div>
       <div
@@ -43,38 +47,30 @@ export default function OpenGraphImage() {
             flexDirection: "column",
             fontSize: 68,
             letterSpacing: -3,
-            lineHeight: 1.15,
+            lineHeight: 1.12,
           }}
         >
-          <span>Ideias em código.</span>
-          <span>Curiosidade em</span>
-          <span style={{ color: "#e5a6b4" }}>movimento.</span>
+          <span>Café, código</span>
+          <span>e boas ideias.</span>
+          <span style={{ color: "#636366" }}>Meus projetos.</span>
         </div>
-        <div
-          style={{
-            display: "flex",
-            width: 245,
-            height: 245,
-            background: "#49111c",
-            borderRadius: 140,
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: 180,
-            letterSpacing: -15,
-            border: "1px solid #e5a6b440",
-          }}
-        >
-          g.
-        </div>
+        {/* ImageResponse needs an embedded image rather than next/image. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={`data:image/png;base64,${asset.toString("base64")}`}
+          width={400}
+          height={400}
+          alt=""
+        />
       </div>
       <div
         style={{
           display: "flex",
           justifyContent: "space-between",
-          borderTop: "1px solid #39282c",
-          paddingTop: 25,
+          borderTop: "1px solid #d1d1d6",
+          paddingTop: 22,
           fontSize: 20,
-          color: "#a5a3ad",
+          color: "#636366",
         }}
       >
         <span>Python · Desenvolvimento web · ADS</span>
