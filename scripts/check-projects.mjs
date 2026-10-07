@@ -1,12 +1,10 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { filterProjects, readFavorites } from "../src/lib/project-model.ts";
-const projects = JSON.parse(
-  readFileSync(
-    new URL("../src/data/projects.json", import.meta.url),
-    "utf8",
-  ).replace(/^\uFEFF/, ""),
-);
+const projects = [
+  { id: "campo-minado", name: "Campo Minado", description: "Lógica e matrizes", languages: ["Python"], tags: ["Arquivos"] },
+  { id: "portfolio", name: "gapxz.dev", description: "Um portfólio web", languages: ["TypeScript", "CSS"], tags: ["Tailwind CSS"] },
+];
 assert.deepEqual(readFavorites("broken"), []);
 assert.deepEqual(readFavorites('{"id":1}'), []);
 assert.deepEqual(readFavorites('["campo-minado",null,"campo-minado"]'), [
@@ -33,3 +31,4 @@ assert.equal(
   0,
 );
 console.log("Project filtering, combined search and favorites checks passed.");
+
