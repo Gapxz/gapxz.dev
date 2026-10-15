@@ -95,15 +95,27 @@ glassNavigation.addEventListener("pointerleave", () => {
 // Always leave the username visible for manual copying.
 const copyButton = document.querySelector("#copy-discord");
 const copyStatus = document.querySelector("#copy-status");
+const copyLabel = document.querySelector("#copy-label");
+let copyFeedbackTimer;
 copyButton.hidden = false;
 copyButton.addEventListener("click", async () => {
+  clearTimeout(copyFeedbackTimer);
   copyButton.disabled = true;
+  delete copyButton.dataset.copied;
+  copyLabel.textContent = "Copiar";
   copyStatus.textContent = "";
   try {
     await navigator.clipboard.writeText(
       document.querySelector("#discord-username").textContent.trim(),
     );
-    copyStatus.textContent = "Usuário gapxz copiado. Até lá no Discord!";
+    copyButton.dataset.copied = "true";
+    copyLabel.textContent = "Copiado";
+    copyStatus.textContent = "Usuário copiado";
+    copyFeedbackTimer = setTimeout(() => {
+      delete copyButton.dataset.copied;
+      copyLabel.textContent = "Copiar";
+      copyStatus.textContent = "";
+    }, 3000);
   } catch {
     copyStatus.textContent =
       "Não foi possível copiar automaticamente. Selecione o nome gapxz acima e copie manualmente.";

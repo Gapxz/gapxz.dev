@@ -133,8 +133,46 @@ button:disabled {
     @apply flex min-w-0 flex-col justify-center rounded-2xl border border-line bg-surface px-5 py-5;
   }
   .copy-button {
-    @apply -my-2 flex min-h-11 items-center rounded-lg px-2 text-xs font-medium underline underline-offset-4;
+    @apply -my-2 inline-flex min-h-11 items-center gap-1.5 rounded-lg px-2 text-xs font-medium text-ink;
   }
+}
+.copy-button {
+  transition:
+    transform 0.15s,
+    background 0.15s;
+}
+.copy-button:active {
+  transform: scale(0.94);
+  background: var(--color-fill);
+}
+.copy-button[data-copied="true"] {
+  background: var(--color-fill);
+}
+.copy-check,
+.copy-button[data-copied="true"] .copy-symbol {
+  display: none;
+}
+.copy-button[data-copied="true"] .copy-check {
+  display: block;
+}
+.copy-status:not(:empty) {
+  position: fixed;
+  z-index: 30;
+  bottom: 24px;
+  left: 50%;
+  translate: -50% 0;
+  width: max-content;
+  max-width: calc(100% - 32px);
+  padding: 12px 18px;
+  border: 1px solid var(--color-line);
+  border-radius: 16px;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  box-shadow: 0 6px 24px #00000018;
+  font-size: 14px;
+  line-height: 1.5;
+  pointer-events: none;
+  animation: entrance 0.2s both;
 }
 .site-header {
   position: fixed;
@@ -255,6 +293,9 @@ a.contact-card,
     box-shadow 0.2s;
 }
 @media (hover: hover) {
+  .copy-button:hover {
+    background: var(--color-fill);
+  }
   .nav-link:not([aria-current]):hover,
   .icon-button:hover,
   .button-secondary:hover {
