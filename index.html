@@ -3,16 +3,395 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfólio do Gap. Estudante de ADS, projetos em Python e web, e aprendizado na prática."
+    />
+    <meta name="theme-color" content="#fafafa" />
+    <meta property="og:title" content="Gap — código, café e curiosidade" />
+    <meta
+      property="og:description"
+      content="Um pouco sobre mim e os projetos que estou construindo."
+    />
+    <meta property="og:type" content="website" />
     <title>Gap | Portfólio</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script>
+      // Apply the theme before the first paint, even if storage is unavailable.
+      try {
+        var savedTheme = localStorage.getItem("gap-theme");
+      } catch {}
+      document.documentElement.dataset.theme =
+        savedTheme === "light" || savedTheme === "dark"
+          ? savedTheme
+          : matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+    </script>
     <link rel="stylesheet" href="/src/styles.css" />
+    <script type="module" src="/src/main.js"></script>
   </head>
-  <body class="bg-white text-neutral-900 antialiased">
-    <main class="mx-auto max-w-5xl px-6 py-24">
-      <h1 class="text-6xl font-semibold tracking-tight">Gap</h1>
-      <p class="mt-6 text-lg">
-        Estudante de ADS. Python, web e aprendizado na prática.
-      </p>
+  <body class="bg-page font-sans text-ink antialiased">
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <header class="site-header">
+      <div class="nav-shell">
+        <a
+          href="#inicio"
+          aria-label="Gap, início"
+          class="shrink-0 px-3 text-2xl font-semibold tracking-[-.06em]"
+          >Gap<span class="text-muted">.</span></a
+        >
+        <button
+          id="menu-toggle"
+          class="icon-button md:hidden"
+          type="button"
+          aria-expanded="false"
+          aria-controls="navigation"
+          hidden
+        >
+          <svg
+            aria-hidden="true"
+            width="21"
+            height="21"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+          >
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+          <span class="sr-only">Abrir menu</span>
+        </button>
+        <nav id="navigation" aria-label="Navegação principal" class="main-nav">
+          <a href="#inicio" class="nav-link" aria-current="location">Início</a>
+          <a href="#projetos" class="nav-link">Projetos</a>
+          <a href="#contato" class="nav-link">Contato</a>
+        </nav>
+        <button
+          id="theme-toggle"
+          class="icon-button theme-toggle"
+          type="button"
+          aria-label="Modo escuro"
+          aria-pressed="false"
+          title="Trocar tema"
+          hidden
+        >
+          <svg
+            class="moon"
+            aria-hidden="true"
+            width="21"
+            height="21"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+          >
+            <path d="M20.5 14A9 9 0 0 1 10 3.5 9 9 0 1 0 20.5 14Z" />
+          </svg>
+          <svg
+            class="sun"
+            aria-hidden="true"
+            width="21"
+            height="21"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+          >
+            <circle cx="12" cy="12" r="4" />
+            <path
+              d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"
+            />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main id="conteudo" class="page-width">
+      <section
+        id="inicio"
+        aria-labelledby="intro-title"
+        class="grid items-center gap-8 pb-16 pt-36 md:min-h-[760px] md:grid-cols-[1.15fr_1fr] md:gap-4 md:pb-24 md:pt-40"
+      >
+        <div class="entrance">
+          <p
+            class="mb-7 inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1.5 text-xs font-medium text-muted"
+          >
+            <span
+              class="size-1.5 rounded-full bg-accent"
+              aria-hidden="true"
+            ></span
+            >Estudante de ADS · 3º semestre
+          </p>
+          <h1
+            id="intro-title"
+            class="font-display text-[clamp(3.3rem,6.5vw,5.5rem)] leading-[1.02] font-semibold tracking-[-.065em]"
+          >
+            Oi, eu sou<br />o Gap<span class="text-muted">.</span>
+          </h1>
+          <p
+            class="mt-5 font-display text-[clamp(1.5rem,2.8vw,2rem)] leading-tight font-medium tracking-[-.035em] text-muted"
+          >
+            Código, café e curiosidade.
+          </p>
+          <p class="mt-5 max-w-[420px] text-base leading-7 text-muted">
+            Aprendo construindo. Entre Python e desenvolvimento web, transformo
+            o que estudo em pequenos projetos — e descubro o próximo passo na
+            prática.
+          </p>
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a href="#projetos" class="button-primary"
+              >Explorar projetos <span aria-hidden="true">↗</span></a
+            >
+            <a href="#contato" class="button-secondary">Vamos conversar</a>
+          </div>
+          <div
+            class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-line pt-5 text-sm"
+          >
+            <span class="text-muted">Me encontre em</span>
+            <a
+              href="https://github.com/Gapxz"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-link"
+              aria-label="GitHub (abre em nova aba)"
+              >GitHub <span aria-hidden="true">↗</span></a
+            >
+            <a
+              href="https://www.linkedin.com/in/gustavo-souza-schroder-08b3b1388/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-link"
+              aria-label="LinkedIn (abre em nova aba)"
+              >LinkedIn <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+        <figure
+          class="entrance mx-auto w-full max-w-[450px] text-center"
+          style="--delay: 100ms"
+        >
+          <img
+            src="/images/coffee-mustache-code.png"
+            width="1280"
+            height="1280"
+            fetchpriority="high"
+            alt="Ilustração de uma xícara com bigode, café e teclas com símbolos de código"
+            class="h-auto w-full"
+          />
+          <figcaption class="-mt-2 text-xs tracking-wide text-muted">
+            Uma ideia de cada vez. Um café também.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section
+        id="projetos"
+        aria-labelledby="projects-title"
+        class="border-t border-line py-16 md:py-20"
+      >
+        <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="eyebrow">Na prática</p>
+            <h2 id="projects-title" class="section-title">
+              O que estou construindo.
+            </h2>
+            <p class="mt-4 max-w-lg leading-7 text-muted">
+              Projetos e estudos que fazem parte da minha jornada. Cada um tem
+              seu código aberto no GitHub.
+            </p>
+          </div>
+          <a
+            href="https://github.com/Gapxz?tab=repositories"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-link text-sm"
+            aria-label="Todos os repositórios no GitHub (abre em nova aba)"
+            >Todos os repositórios <span aria-hidden="true">↗</span></a
+          >
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          <!-- NOVO PROJETO: duplique um dos links abaixo e edite URL, título, descrição e tecnologias. -->
+          <a
+            class="project-card group"
+            href="https://github.com/Gapxz/gapxz.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-labelledby="portfolio-name"
+            aria-describedby="portfolio-description project-link-hint"
+          >
+            <div class="mb-8 flex items-start justify-between">
+              <span class="project-icon" aria-hidden="true">&lt;/&gt;</span>
+              <span
+                class="text-xl text-muted transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                aria-hidden="true"
+                >↗</span
+              >
+            </div>
+            <p class="mb-2 text-xs text-muted">Pessoal · Web</p>
+            <h3
+              id="portfolio-name"
+              class="text-2xl font-semibold tracking-[-.04em]"
+            >
+              gapxz.dev
+            </h3>
+            <p
+              id="portfolio-description"
+              class="mt-3 flex-1 text-sm leading-6 text-muted"
+            >
+              Meu espaço na internet. Uma página simples para reunir projetos,
+              experimentar interfaces e acompanhar minha evolução.
+            </p>
+            <ul
+              class="mt-7 flex flex-wrap gap-2 text-xs"
+              aria-label="Tecnologias"
+            >
+              <li class="tag">HTML</li>
+              <li class="tag">Tailwind CSS</li>
+              <li class="tag">JavaScript</li>
+            </ul>
+            <span class="mt-7 border-t border-line pt-4 text-sm font-medium"
+              >Ver repositório <span aria-hidden="true">↗</span></span
+            >
+          </a>
+          <a
+            class="project-card group"
+            href="https://github.com/Gapxz/engenharia-software-2"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-labelledby="git-name"
+            aria-describedby="git-description project-link-hint"
+          >
+            <div class="mb-8 flex items-start justify-between">
+              <span class="project-icon" aria-hidden="true"
+                ><svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                >
+                  <circle cx="6" cy="5" r="2" />
+                  <circle cx="6" cy="19" r="2" />
+                  <circle cx="18" cy="5" r="2" />
+                  <path
+                    d="M6 7v10M18 7v2a4 4 0 0 1-4 4h-4a4 4 0 0 0-4 4"
+                  /></svg
+              ></span>
+              <span
+                class="text-xl text-muted transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                aria-hidden="true"
+                >↗</span
+              >
+            </div>
+            <p class="mb-2 text-xs text-muted">Faculdade · Estudos</p>
+            <h3 id="git-name" class="text-2xl font-semibold tracking-[-.04em]">
+              Engenharia de Software II
+            </h3>
+            <p
+              id="git-description"
+              class="mt-3 flex-1 text-sm leading-6 text-muted"
+            >
+              Um repositório para aprender Git e GitHub, praticar versionamento
+              e explorar exercícios básicos em JavaScript.
+            </p>
+            <ul
+              class="mt-7 flex flex-wrap gap-2 text-xs"
+              aria-label="Tecnologias"
+            >
+              <li class="tag">Git</li>
+              <li class="tag">GitHub</li>
+              <li class="tag">JavaScript</li>
+            </ul>
+            <span class="mt-7 border-t border-line pt-4 text-sm font-medium"
+              >Ver repositório <span aria-hidden="true">↗</span></span
+            >
+          </a>
+        </div>
+        <p id="project-link-hint" class="mt-5 text-xs text-muted">
+          Os repositórios abrem em uma nova aba.
+        </p>
+      </section>
+
+      <section
+        id="contato"
+        aria-labelledby="contact-title"
+        class="border-t border-line py-16 md:py-20"
+      >
+        <p class="eyebrow">Contato</p>
+        <h2 id="contact-title" class="section-title">Bora trocar uma ideia?</h2>
+        <p class="mt-4 leading-7 text-muted">
+          Sobre código, uma oportunidade ou um projeto. Você me encontra por
+          aqui.
+        </p>
+        <div class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <a
+            href="https://github.com/Gapxz"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card"
+            aria-label="GitHub: Gapxz (abre em nova aba)"
+            ><span class="flex justify-between font-semibold"
+              >GitHub <span aria-hidden="true">↗</span></span
+            ><span class="mt-2 text-sm text-muted">@Gapxz</span></a
+          >
+          <a
+            href="https://www.linkedin.com/in/gustavo-souza-schroder-08b3b1388/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card"
+            aria-label="LinkedIn: meu perfil (abre em nova aba)"
+            ><span class="flex justify-between font-semibold"
+              >LinkedIn <span aria-hidden="true">↗</span></span
+            ><span class="mt-2 text-sm text-muted">Vamos nos conectar</span></a
+          >
+          <a
+            href="https://www.instagram.com/gap.xz/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card"
+            aria-label="Instagram: gap.xz (abre em nova aba)"
+            ><span class="flex justify-between font-semibold"
+              >Instagram <span aria-hidden="true">↗</span></span
+            ><span class="mt-2 text-sm text-muted">@gap.xz</span></a
+          >
+          <div class="contact-card">
+            <div class="flex items-center justify-between gap-2">
+              <span class="font-semibold">Discord</span
+              ><button
+                id="copy-discord"
+                type="button"
+                class="copy-button"
+                aria-label="Copiar usuário do Discord: gapxz"
+                hidden
+              >
+                Copiar
+              </button>
+            </div>
+            <span
+              id="discord-username"
+              class="mt-2 w-fit select-text text-sm text-muted"
+              >gapxz</span
+            >
+          </div>
+        </div>
+        <p
+          id="copy-status"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+          class="mt-3 min-h-6 text-sm text-muted"
+        ></p>
+      </section>
     </main>
+    <footer
+      class="page-width flex flex-wrap items-center justify-between gap-4 border-t border-line py-7 text-xs text-muted"
+    >
+      <p>© <span id="year">2026</span> Gap. Feito com curiosidade.</p>
+      <a href="#inicio" class="text-link"
+        >De volta ao topo <span aria-hidden="true">↑</span></a
+      >
+    </footer>
   </body>
 </html>
