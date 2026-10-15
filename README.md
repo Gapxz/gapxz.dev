@@ -1,82 +1,76 @@
-# gapxz.dev
+# Gap — portfólio
 
-Portfólio de Gustavo Souza Schroder (Gap), em português. Projetos em destaque, filtros por linguagem, busca, favoritos e um editor local para acompanhar novos repositórios.
+Uma página em HTML, Tailwind CSS e JavaScript puro. O Vite serve a prévia e gera os arquivos estáticos; não há back-end.
 
-## Executar o portfólio
+## Executar
 
-Requer Node.js 20.9+ e npm. Para os testes TypeScript nativos, use Node.js 22.18+.
+Requer Node.js 22.12+ e npm.
 
 ```sh
 npm ci
 npm run dev
 ```
 
-Abra http://localhost:3000. Para produção: `npm run build` e `npm start`.
-
-## Adicionar ou editar projetos
-
-O editor usa **Python 3.10+**, sem dependências externas. Ele salva o catálogo em `src/data/projects.json`. O site publicado funciona com esse arquivo e não precisa de um servidor Python em produção.
-
-1. Crie `.env.local` na raiz com `NEXT_PUBLIC_PORTFOLIO_API_ENABLED=true`.
-2. Em um terminal, execute `python backend/server.py`.
-3. Em outro terminal, execute `npm run dev` (reinicie se mudou a configuração).
-4. Abra http://localhost:3000/admin. A senha é gerada no primeiro início e fica em `.portfolio-admin.key`. Abra esse arquivo localmente e copie a senha para o painel.
-5. Clique em **Novo projeto**, preencha os dados e salve. Também é possível editar e remover projetos existentes. Repositório e demonstração são links HTTPS opcionais.
-6. Confira a página pública e publique a alteração do catálogo:
+Abra http://localhost:3000. Para conferir a produção, encerre a prévia anterior e execute:
 
 ```sh
-npx prettier src/data/projects.json --write
-git add src/data/projects.json
-git commit -m "content: add new portfolio project"
-git push origin main
+npm run build
+npm run preview
 ```
 
-O próximo build/deploy incluirá o catálogo atualizado. Salvar no painel **não faz push ou deploy automaticamente**. A integração com GitHub é feita por links para os repositórios; não há importação automática. Os filtros de linguagem são gerados a partir dos projetos cadastrados.
+Publique a pasta `dist/` em uma hospedagem estática. Comando de build: `npm run build`; diretório de saída: `dist`. Ao atualizar uma hospedagem que usava Next.js, selecione o preset Vite ou site estático e remova a configuração da antiga API.
 
-### Funcionamento do editor
+## Adicionar um projeto
 
-- API escuta apenas em `127.0.0.1:8766`, acessada pelo proxy local do Next.js. Este é um editor de desenvolvimento local, não um serviço de administração hospedado.
-- Não defina `NEXT_PUBLIC_PORTFOLIO_API_ENABLED=true` na hospedagem pública. Sem essa variável, o site usa o catálogo incluído no build e não expõe o proxy da API.
-- Senha, `.env.local`, arquivos temporários e backup são ignorados pelo Git. A senha fica somente na memória da aba durante a sessão. **Sair** ou recarregar encerra a sessão.
-- Gravação atômica, backup da versão anterior em `src/data/projects.json.bak`, validação de campos/links, limite de 100 projetos e proteção contra sobrescrita de alterações concorrentes por ETag.
-- Se outro editor alterar o catálogo, use **Recarregar catálogo**, confira os dados e salve novamente. O formulário é preservado.
-- Para recuperar um backup, pare o editor e copie `src/data/projects.json.bak` sobre `src/data/projects.json`; confira antes de versionar.
-- Opcional: `PORTFOLIO_ADMIN_KEY` define uma senha de pelo menos 24 caracteres no ambiente do Python. Nunca use prefixo `NEXT_PUBLIC_` para a senha.
+1. Abra `index.html` e procure o comentário `NOVO PROJETO`.
+2. Duplique um bloco inteiro `<a class="project-card ...">...</a>`.
+3. Troque o `href` pelo endereço do repositório **público**, o título, a descrição e as tecnologias.
+4. Use IDs únicos no título/descrição e atualize `aria-labelledby`/`aria-describedby` do link. Preserve `project-link-hint`.
+5. Confira no celular e execute `npm run build`. Faça commit e push para publicar pela hospedagem configurada.
 
-## Interface
+Os cards atuais apontam para `gapxz.dev` e `engenharia-software-2`. O conteúdo é manual, sem consultas à API do GitHub no navegador.
 
-- Next.js 16, React 19, TypeScript e Tailwind CSS 4.
-- Temas claro e escuro com superfícies neutras de sistema; vermelho em ações principais. O primeiro acesso segue o sistema e o interruptor salva a escolha neste navegador.
-- SF Pro nativa em plataformas Apple via `-apple-system` e `BlinkMacSystemFont`, com stacks para texto e títulos. Em Windows/Android, fontes locais equivalentes. Nenhum arquivo proprietário de fonte é redistribuído. Referências: [fontes Apple](https://developer.apple.com/fonts/) e [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines).
-- Navegação translúcida ao rolar, controles de toque, busca sem distinção de acentos, filtros combináveis e diálogos nativos com Escape/restauração de foco.
-- Favoritos em `localStorage`, independentes para cada navegador. Não há conta de visitante nem sincronização entre dispositivos. Se o armazenamento estiver bloqueado, a interface informa o problema.
-- Contato apenas por LinkedIn e GitHub.
+## Onde editar
 
-## Movimento e acessibilidade
+- `index.html`: apresentação, projetos, contatos e aplicação inicial do tema.
+- `src/styles.css`: Tailwind, cores dos temas, tipografia e pequenos efeitos.
+- `src/main.js`: tema, menu mobile, seção ativa e cópia do Discord.
+- `public/`: imagens e favicon. Estes arquivos são copiados para `dist/`.
 
-Entradas escalonadas, flutuação suave da xícara e etiquetas, parallax leve, feedback de hover e pressão. O hero permite pausar o movimento. `prefers-reduced-motion` reduz os efeitos e `prefers-reduced-transparency` fornece superfícies opacas. As animações contínuas param fora da tela.
+O tema segue o sistema até a primeira escolha e salva a preferência quando possível. O Discord permanece visível para cópia manual se o navegador bloquear a área de transferência. Os links do conteúdo continuam disponíveis sem JavaScript.
 
-## Conteúdo e arte
+Fontes nativas de sistema, incluindo San Francisco em dispositivos Apple. A imagem de café é uma ilustração conceitual gerada com IA na versão anterior, não uma foto pessoal. Reutilizada de `public/images/coffee-mustache-code.png`.
 
-- `src/data/projects.json`: catálogo publicado e editado pelo painel.
-- `src/lib/portfolio.ts`: perfis públicos e equipamentos.
-- `src/app/page.tsx`: apresentação, formação, reconhecimento e demais seções.
-- `src/app/globals.css`: cores, tipografia, componentes e animações.
-- `src/components/hero-scene.tsx`: imagem, etiquetas e controle de movimento.
-- `src/components/motion.tsx`: preferências, revelações e parallax.
-- `backend/server.py`: API local de edição.
-
-A imagem `public/images/coffee-mustache-code.png` foi criada com **ImageGen integrado**, em modo **generate**, fundo transparente. Direção do prompt: fotografia/ilustração 3D de estúdio, xícara branca de espresso com bigode preto, pires prateado e teclas grafite com símbolos de código, composição minimalista em branco, preto e prata. É uma ilustração conceitual, não uma fotografia pessoal. As capas de projetos e a ilustração do setup também são representações, não capturas reais.
-
-## Verificar
+## Revisar
 
 ```sh
-npm run lint
-npm run typecheck
 npm run format:check
-node scripts/check-projects.mjs
-python backend/test_server.py
+node --check src/main.js
 npm run build
 ```
 
-Os testes cobrem busca, filtros, favoritos inválidos, autenticação, criação, edição, remoção, validação, persistência, backup e conflitos. O teste Python usa arquivos temporários e não altera o catálogo real. Confira também temas, responsividade, navegação por teclado e movimento reduzido no navegador; SF Pro deve ser conferida em um dispositivo Apple.
+Confira também temas, menu (Enter/Escape), âncoras, links externos e cópia do Discord, com largura de 320 px e desktop. As animações respeitam `prefers-reduced-motion`.
+
+A versão anterior está preservada na tag `archive/before-static-2026-10-14`.
+
+## Abrir no Windows
+
+Abra a pasta `gapxz.dev` no Explorador de Arquivos, digite `cmd` na barra de endereço e pressione Enter. No terminal, execute:
+
+```bat
+npm run dev
+```
+
+Na primeira execução após baixar o projeto, rode `npm ci` antes. Abra o endereço mostrado pelo Vite (normalmente http://localhost:3000) no Chrome, Edge ou outro navegador. No terminal do VS Code, Ctrl + clique costuma abrir o link; no CMD, copie e cole o endereço no navegador.
+
+Mantenha o terminal aberto enquanto usa a prévia. Para encerrar, pressione Ctrl + C. Se a porta 3000 já estiver ocupada, o Vite escolhe a próxima disponível (por exemplo, 3001). Abra sempre o endereço exibido no terminal. Isso também vale para `npm run preview`. Não é necessário abrir `index.html` diretamente.
+
+## Ícones das redes
+
+Os PNGs ficam em `public/images/social/` e são servidos localmente:
+
+- GitHub e LinkedIn: cópias dos PNGs já presentes na pasta do usuário; os originais foram preservados.
+- Discord: símbolo preto do [kit oficial](https://discord.com/branding).
+- Instagram: versão PNG transparente do [símbolo no Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Instagram_simple_icon.svg).
+
+Os símbolos monocromáticos de GitHub, Instagram e Discord ficam claros no tema escuro via CSS. O LinkedIn mantém sua cor. As marcas identificam os respectivos perfis, sem indicar vínculo com as plataformas.
