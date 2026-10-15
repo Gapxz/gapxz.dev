@@ -20,11 +20,16 @@
   --glass: #cbd3df70;
   --glass-edge: #8c96a34a;
   --glass-highlight: #ffffffed;
-  --glass-selected: #ffffff80;
+  --glass-selected: linear-gradient(180deg, #ffffffd9, #ffffff80);
+  --glass-hover: #ffffff52;
   --glass-shadow: #27334520;
   --glass-rim: #7f899a45;
   --glass-reflection: #ffffffb3;
   --glass-solid: linear-gradient(168deg, #fafbfd 0%, #e8edf3 48%, #dce3eb 100%);
+  --glass-wash-top: #ffffff3d;
+  --glass-wash-bottom: #ffffff29;
+  --glass-side: #ffffff70;
+  --glass-rim-opacity: 0.8;
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
@@ -35,14 +40,19 @@
   --color-line: #333336;
   --color-fill: #28282c;
   --color-accent: #ff696e;
-  --glass: #30323c66;
-  --glass-edge: #ffffff38;
-  --glass-highlight: #ffffff6b;
-  --glass-selected: #ffffff21;
+  --glass: #161618b8;
+  --glass-edge: #ffffff1f;
+  --glass-highlight: #ffffff26;
+  --glass-selected: linear-gradient(180deg, #ffffff14, #ffffff08);
+  --glass-hover: #ffffff0a;
   --glass-shadow: #00000059;
   --glass-rim: #0000005c;
-  --glass-reflection: #ffffff26;
-  --glass-solid: linear-gradient(168deg, #424650 0%, #2b2e37 48%, #202229 100%);
+  --glass-reflection: #ffffff0d;
+  --glass-solid: linear-gradient(168deg, #242426 0%, #1c1c1e 48%, #18181a 100%);
+  --glass-wash-top: #ffffff08;
+  --glass-wash-bottom: #ffffff03;
+  --glass-side: #ffffff12;
+  --glass-rim-opacity: 0.22;
 }
 html {
   scroll-behavior: smooth;
@@ -87,6 +97,7 @@ button:disabled {
     @apply flex min-h-12 items-center justify-center rounded-full px-5 text-base font-medium text-ink;
   }
   .nav-link[aria-current="location"] {
+    font-weight: 600;
     background: var(--glass-selected);
     box-shadow:
       inset 0 1px 1px var(--glass-highlight),
@@ -149,17 +160,17 @@ button:disabled {
   background:
     linear-gradient(
       165deg,
-      #ffffff3d,
+      var(--glass-wash-top),
       transparent 38%,
       #7783990d 75%,
-      #ffffff29
+      var(--glass-wash-bottom)
     ),
     var(--glass);
   -webkit-backdrop-filter: blur(18px) saturate(150%);
   backdrop-filter: blur(18px) saturate(150%);
   box-shadow:
     inset 0 2px 2px var(--glass-highlight),
-    inset 1px 0 1px #ffffff70,
+    inset 1px 0 1px var(--glass-side),
     inset 0 -2px 3px var(--glass-rim),
     0 3px 6px #18243b06,
     0 14px 36px -12px var(--glass-shadow);
@@ -176,6 +187,7 @@ button:disabled {
   z-index: -1;
 }
 .nav-shell::before {
+  opacity: var(--glass-rim-opacity);
   padding: 1px;
   background: linear-gradient(
     135deg,
@@ -205,11 +217,17 @@ button:disabled {
   display: flex;
   flex: 1;
   justify-content: center;
-  gap: 2px;
+  gap: 4px;
+}
+.main-nav .nav-link {
+  flex: 1;
+  max-width: 112px;
 }
 .theme-toggle {
+  width: 48px;
+  height: 48px;
   margin-left: auto;
-  background: var(--glass-selected);
+  background: var(--glass-hover);
   border: 1px solid var(--glass-edge);
   box-shadow:
     inset 0 1px 1px var(--glass-highlight),
@@ -260,7 +278,7 @@ a.contact-card,
   }
   .nav-link:not([aria-current]):hover,
   .nav-shell .icon-button:hover {
-    background: var(--glass-selected);
+    background: var(--glass-hover);
   }
 }
 a:active,
