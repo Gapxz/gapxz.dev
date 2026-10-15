@@ -92,6 +92,34 @@ window.addEventListener("scroll", updateCurrentSection, { passive: true });
 window.addEventListener("resize", updateCurrentSection);
 updateCurrentSection();
 
+// Move only the glass reflection; navigation stays still and readable.
+const glassNavigation = document.querySelector(".nav-shell");
+const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+const reducedTransparency = matchMedia(
+  "(prefers-reduced-transparency: reduce)",
+);
+glassNavigation.addEventListener("pointermove", (event) => {
+  if (
+    reducedMotion.matches ||
+    reducedTransparency.matches ||
+    event.pointerType !== "mouse"
+  )
+    return;
+  const bounds = glassNavigation.getBoundingClientRect();
+  glassNavigation.style.setProperty(
+    "--light-x",
+    `${event.clientX - bounds.left}px`,
+  );
+  glassNavigation.style.setProperty(
+    "--light-y",
+    `${event.clientY - bounds.top}px`,
+  );
+});
+glassNavigation.addEventListener("pointerleave", () => {
+  glassNavigation.style.removeProperty("--light-x");
+  glassNavigation.style.removeProperty("--light-y");
+});
+
 // Always leave the username visible for manual copying.
 const copyButton = document.querySelector("#copy-discord");
 const copyStatus = document.querySelector("#copy-status");

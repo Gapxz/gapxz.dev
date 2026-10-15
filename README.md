@@ -39,6 +39,8 @@ Os cards atuais apontam para `gapxz.dev` e `engenharia-software-2`. O conteúdo 
 
 O tema segue o sistema até a primeira escolha e salva a preferência quando possível. O Discord permanece visível para cópia manual se o navegador bloquear a área de transferência. Os links do conteúdo continuam disponíveis sem JavaScript.
 
+A navbar usa uma interpretação em CSS de [Liquid Glass](https://developer.apple.com/design/human-interface-guidelines/materials), com desfoque, bordas reflexivas e um brilho que acompanha o cursor. Com redução de transparência no sistema ou sem suporte a desfoque, usa um acabamento opaco com profundidade. A redução de movimento desativa o brilho móvel; o modo de alto contraste prioriza superfícies sólidas.
+
 Fontes nativas de sistema, incluindo San Francisco em dispositivos Apple. A imagem de café é uma ilustração conceitual gerada com IA na versão anterior, não uma foto pessoal. Reutilizada de `public/images/coffee-mustache-code.png`.
 
 ## Revisar
