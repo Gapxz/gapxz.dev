@@ -52,3 +52,25 @@ npm run build
 Confira também temas, menu (Enter/Escape), âncoras, links externos e cópia do Discord, com largura de 320 px e desktop. As animações respeitam `prefers-reduced-motion`.
 
 A versão anterior está preservada na tag `archive/before-static-2026-10-14`.
+
+## Abrir no Windows
+
+Abra a pasta `gapxz.dev` no Explorador de Arquivos, digite `cmd` na barra de endereço e pressione Enter. No terminal, execute:
+
+```bat
+npm run dev
+```
+
+Na primeira execução após baixar o projeto, rode `npm ci` antes. Abra o endereço mostrado pelo Vite (normalmente http://localhost:3000) no Chrome, Edge ou outro navegador. No terminal do VS Code, Ctrl + clique costuma abrir o link; no CMD, copie e cole o endereço no navegador.
+
+Mantenha o terminal aberto enquanto usa a prévia. Para encerrar, pressione Ctrl + C. Se a porta 3000 já estiver ocupada por outra prévia, use a que já está rodando ou encerre o terminal anterior. Não é necessário abrir `index.html` diretamente.
+
+## Ícones das redes
+
+Os PNGs ficam em `public/images/social/` e são servidos localmente:
+
+- GitHub e LinkedIn: cópias dos PNGs já presentes na pasta do usuário; os originais foram preservados.
+- Discord: símbolo preto do [kit oficial](https://discord.com/branding).
+- Instagram: PNG disponibilizado no [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Instagram_icon.png).
+
+Os símbolos monocromáticos de GitHub e Discord ficam claros no tema escuro via CSS. LinkedIn e Instagram mantêm suas cores. As marcas identificam os respectivos perfis, sem indicar vínculo com as plataformas.

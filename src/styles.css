@@ -246,3 +246,14 @@ button:active {
     backdrop-filter: none;
   }
 }
+
+/* Transparent PNGs: monochrome marks follow the theme; brand colors stay intact. */
+.social-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+[data-theme="dark"] .social-icon-mono {
+  filter: invert(1);
+}
