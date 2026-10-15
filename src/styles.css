@@ -17,7 +17,11 @@
 }
 :root {
   color-scheme: light;
-  --glass: #ffffffeb;
+  --glass: #ffffffa8;
+  --glass-edge: #ffffffd9;
+  --glass-highlight: #ffffffdb;
+  --glass-selected: #dcdce26b;
+  --glass-shadow: #24243612;
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
@@ -28,7 +32,11 @@
   --color-line: #333336;
   --color-fill: #28282c;
   --color-accent: #ff696e;
-  --glass: #1c1c1eeb;
+  --glass: #242427a8;
+  --glass-edge: #ffffff29;
+  --glass-highlight: #ffffff30;
+  --glass-selected: #ffffff1c;
+  --glass-shadow: #00000040;
 }
 html {
   scroll-behavior: smooth;
@@ -70,10 +78,13 @@ button:disabled {
     @apply font-display text-[clamp(2rem,4vw,2.8rem)] leading-[1.1] font-semibold tracking-[-.05em];
   }
   .nav-link {
-    @apply flex min-h-11 items-center justify-center rounded-full px-5 text-sm font-medium text-muted;
+    @apply flex min-h-11 items-center justify-center rounded-full px-5 text-[15px] font-medium text-ink;
   }
   .nav-link[aria-current="location"] {
-    @apply bg-ink text-page;
+    background: var(--glass-selected);
+    box-shadow:
+      inset 0 1px 0 var(--glass-highlight),
+      0 2px 6px var(--glass-shadow);
   }
   .icon-button {
     @apply grid size-11 shrink-0 place-items-center rounded-full text-ink;
@@ -124,11 +135,18 @@ button:disabled {
   max-width: 590px;
   margin: auto;
   padding: 7px;
-  border: 1px solid var(--color-line);
+  position: relative;
+  isolation: isolate;
+  border: 1px solid var(--glass-edge);
   border-radius: 36px;
-  background: var(--glass);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 3px 14px #00000006;
+  background:
+    linear-gradient(135deg, #ffffff1f, transparent 45%, #ffffff09), var(--glass);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  backdrop-filter: blur(28px) saturate(160%);
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    inset 0 -1px 0 #ffffff08,
+    0 8px 28px var(--glass-shadow);
   pointer-events: auto;
 }
 .main-nav {
@@ -139,7 +157,8 @@ button:disabled {
 }
 .theme-toggle {
   margin-left: auto;
-  background: var(--color-fill);
+  background: var(--glass-selected);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
 }
 .sun,
 [data-theme="dark"] .moon {
@@ -153,7 +172,8 @@ button:disabled {
 .button-primary,
 .button-secondary,
 .project-card,
-a.contact-card {
+a.contact-card,
+.social-link {
   transition:
     background 0.2s,
     color 0.2s,
@@ -177,6 +197,14 @@ a.contact-card {
   }
   .text-link:hover {
     text-decoration: underline;
+  }
+  .social-link:hover {
+    background: var(--color-fill);
+    transform: translateY(-2px);
+  }
+  .nav-link:not([aria-current]):hover,
+  .nav-shell .icon-button:hover {
+    background: var(--glass-selected);
   }
 }
 a:active,
@@ -243,8 +271,39 @@ button:active {
 @media (prefers-reduced-transparency: reduce) {
   .nav-shell {
     background: var(--color-surface);
+    -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }
+}
+@supports not (backdrop-filter: blur(1px)) {
+  .nav-shell {
+    background: var(--color-surface);
+  }
+}
+
+.social-follow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 14px;
+  row-gap: 4px;
+}
+.social-links {
+  display: flex;
+  gap: 4px;
+}
+.social-link {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: 50%;
+}
+.social-link .social-icon {
+  filter: grayscale(1);
+}
+[data-theme="dark"] .social-link .social-icon-mono {
+  filter: invert(1);
 }
 
 /* Transparent PNGs: monochrome marks follow the theme; brand colors stay intact. */
