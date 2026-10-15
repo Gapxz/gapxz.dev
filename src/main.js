@@ -74,10 +74,14 @@ navLinks.forEach((link) =>
 );
 const sections = [...document.querySelectorAll("main section[id]")];
 function updateCurrentSection() {
-  const current =
-    sections
-      .filter((section) => section.getBoundingClientRect().top <= 150)
-      .at(-1) || sections[0];
+  const atBottom =
+    window.scrollY > 0 &&
+    Math.ceil(window.scrollY + window.innerHeight) >= root.scrollHeight;
+  const current = atBottom
+    ? sections.at(-1)
+    : sections
+        .filter((section) => section.getBoundingClientRect().top <= 150)
+        .at(-1) || sections[0];
   navLinks.forEach((link) => {
     if (link.hash === `#${current.id}`)
       link.setAttribute("aria-current", "location");
@@ -85,6 +89,7 @@ function updateCurrentSection() {
   });
 }
 window.addEventListener("scroll", updateCurrentSection, { passive: true });
+window.addEventListener("resize", updateCurrentSection);
 updateCurrentSection();
 
 // Always leave the username visible for manual copying.

@@ -1,11 +1,54 @@
 # Gap — portfólio
 
-Uma página em HTML, Tailwind CSS e JavaScript. Requer Node.js 22.12+.
+Uma página em HTML, Tailwind CSS e JavaScript puro. O Vite serve a prévia e gera os arquivos estáticos; não há back-end.
+
+## Executar
+
+Requer Node.js 22.12+ e npm.
 
 ```sh
 npm ci
 npm run dev
 ```
 
-Prévia: http://localhost:3000. `npm run build` gera o site estático em `dist/`.
-Os textos e os cards de projetos ficam em `index.html`.
+Abra http://localhost:3000. Para conferir a produção, encerre a prévia anterior e execute:
+
+```sh
+npm run build
+npm run preview
+```
+
+Publique a pasta `dist/` em uma hospedagem estática. Comando de build: `npm run build`; diretório de saída: `dist`. Ao atualizar uma hospedagem que usava Next.js, selecione o preset Vite ou site estático e remova a configuração da antiga API.
+
+## Adicionar um projeto
+
+1. Abra `index.html` e procure o comentário `NOVO PROJETO`.
+2. Duplique um bloco inteiro `<a class="project-card ...">...</a>`.
+3. Troque o `href` pelo endereço do repositório **público**, o título, a descrição e as tecnologias.
+4. Use IDs únicos no título/descrição e atualize `aria-labelledby`/`aria-describedby` do link. Preserve `project-link-hint`.
+5. Confira no celular e execute `npm run build`. Faça commit e push para publicar pela hospedagem configurada.
+
+Os cards atuais apontam para `gapxz.dev` e `engenharia-software-2`. O conteúdo é manual, sem consultas à API do GitHub no navegador.
+
+## Onde editar
+
+- `index.html`: apresentação, projetos, contatos e aplicação inicial do tema.
+- `src/styles.css`: Tailwind, cores dos temas, tipografia e pequenos efeitos.
+- `src/main.js`: tema, menu mobile, seção ativa e cópia do Discord.
+- `public/`: imagens e favicon. Estes arquivos são copiados para `dist/`.
+
+O tema segue o sistema até a primeira escolha e salva a preferência quando possível. O Discord permanece visível para cópia manual se o navegador bloquear a área de transferência. Os links do conteúdo continuam disponíveis sem JavaScript.
+
+Fontes nativas de sistema, incluindo San Francisco em dispositivos Apple. A imagem de café é uma ilustração conceitual gerada com IA na versão anterior, não uma foto pessoal. Reutilizada de `public/images/coffee-mustache-code.png`.
+
+## Revisar
+
+```sh
+npm run format:check
+node --check src/main.js
+npm run build
+```
+
+Confira também temas, menu (Enter/Escape), âncoras, links externos e cópia do Discord, com largura de 320 px e desktop. As animações respeitam `prefers-reduced-motion`.
+
+A versão anterior está preservada na tag `archive/before-static-2026-10-14`.
