@@ -34,7 +34,7 @@ Os cards atuais apontam para `gapxz.dev` e `engenharia-software-2`. O conteúdo 
 
 - `index.html`: apresentação, projetos, contatos e aplicação inicial do tema.
 - `src/styles.css`: Tailwind, cores dos temas, tipografia e pequenos efeitos.
-- `src/main.js`: tema, menu mobile, seção ativa e cópia do Discord.
+- `src/main.js`: tema, seção ativa, reflexo da navbar e cópia do Discord.
 - `public/`: imagens e favicon. Estes arquivos são copiados para `dist/`.
 
 O tema segue o sistema até a primeira escolha e salva a preferência quando possível. O Discord permanece visível para cópia manual se o navegador bloquear a área de transferência. Os links do conteúdo continuam disponíveis sem JavaScript.
@@ -51,7 +51,7 @@ node --check src/main.js
 npm run build
 ```
 
-Confira também temas, menu (Enter/Escape), âncoras, links externos e cópia do Discord, com largura de 320 px e desktop. As animações respeitam `prefers-reduced-motion`.
+Confira também temas, navegação por teclado (Tab/Enter), âncoras, links externos e cópia do Discord, com largura de 320 px e desktop. A navbar mantém os links visíveis no celular. As animações respeitam `prefers-reduced-motion`.
 
 A versão anterior está preservada na tag `archive/before-static-2026-10-14`.
 

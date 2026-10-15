@@ -34,39 +34,11 @@ window.addEventListener("storage", (event) => {
   }
 });
 
-// The links remain available when JavaScript is disabled.
-const menuButton = document.querySelector("#menu-toggle");
+// Navigation stays visible at every screen size, including without JavaScript.
 const navigation = document.querySelector("#navigation");
-const mobile = matchMedia("(max-width: 767px)");
-function setMenu(open) {
-  menuButton.setAttribute("aria-expanded", String(open));
-  menuButton.querySelector("span").textContent = open
-    ? "Fechar menu"
-    : "Abrir menu";
-  navigation.hidden = mobile.matches && !open;
-}
-menuButton.hidden = false;
-setMenu(false);
-menuButton.addEventListener("click", () =>
-  setMenu(menuButton.getAttribute("aria-expanded") !== "true"),
-);
-mobile.addEventListener("change", () => setMenu(false));
-document.addEventListener("keydown", (event) => {
-  if (
-    event.key === "Escape" &&
-    menuButton.getAttribute("aria-expanded") === "true"
-  ) {
-    setMenu(false);
-    menuButton.focus();
-  }
-});
-document.addEventListener("click", (event) => {
-  if (!event.target.closest(".nav-shell")) setMenu(false);
-});
 const navLinks = [...navigation.querySelectorAll("a")];
 navLinks.forEach((link) =>
   link.addEventListener("click", () => {
-    setMenu(false);
     const target = document.querySelector(link.hash);
     target.setAttribute("tabindex", "-1");
     target.focus({ preventScroll: true });

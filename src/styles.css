@@ -313,21 +313,27 @@ button:active {
   }
 }
 @media (max-width: 767px) {
+  .site-header {
+    padding-inline: 12px;
+  }
   .nav-shell {
     max-width: 430px;
+    flex-wrap: nowrap;
+    gap: 6px;
+    padding: 6px;
   }
   .main-nav {
-    order: 3;
-    flex-basis: 100%;
+    min-width: 0;
+    gap: 2px;
   }
   .main-nav a {
-    flex: 1;
-    padding-inline: 8px;
-  }
-  #menu-toggle {
-    margin-left: auto;
+    min-height: 44px;
+    padding-inline: 6px;
+    font-size: 14px;
   }
   .theme-toggle {
+    width: 44px;
+    height: 44px;
     margin-left: 0;
   }
 }
